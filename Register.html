@@ -1,127 +1,146 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>VYBE - Create Account</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#7545dc">
+<title>Join VYBE — Create Account</title>
 <style>
-* { box-sizing: border-box; }
-body {
-  margin: 0;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: #f5f3ff;
-  font-family: Arial, sans-serif;
-  padding: 20px;
-}
-.card {
-  background: white;
-  width: 100%;
-  max-width: 380px;
-  padding: 30px;
-  border-radius: 20px;
-  box-shadow: 0 8px 30px #0001;
-}
-h1 { color: #7545dc; text-align: center; }
-p { color: #777; text-align: center; }
-input {
-  width: 100%;
-  padding: 14px;
-  margin: 9px 0;
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  font-size: 16px;
-}
-button {
-  width: 100%;
-  padding: 14px;
-  margin-top: 15px;
-  border: 0;
-  border-radius: 10px;
-  background: #7545dc;
-  color: white;
-  font-size: 16px;
-  font-weight: bold;
-}
-a { color: #7545dc; text-decoration: none; }
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;background:linear-gradient(135deg,#f7f3ff,#eee7fb);font-family:Arial,Helvetica,sans-serif;color:#272238;display:grid;place-items:center;padding:20px}
+.card{width:min(100%,440px);background:#fff;border:1px solid #eee8f8;border-radius:22px;padding:30px;box-shadow:0 18px 55px #4d2a8817}
+.logo{font-size:34px;font-weight:950;letter-spacing:-2px;color:#7545dc;text-align:center}
+.tagline{text-align:center;color:#81798e;margin:5px 0 25px}
+h1{font-size:23px;margin:0 0 7px}
+.sub{color:#81798e;font-size:14px;margin:0 0 20px;line-height:1.5}
+label{display:block;font-weight:700;font-size:14px;margin:14px 0 7px}
+input{width:100%;border:1px solid #e4deee;border-radius:11px;padding:13px 14px;font-size:16px;outline:none}
+input:focus{border-color:#9670e8;box-shadow:0 0 0 3px #7545dc18}
+.hint{font-size:12px;color:#8b8498;margin-top:6px;line-height:1.4}
+button{width:100%;border:0;border-radius:12px;padding:14px;background:#7545dc;color:white;font-size:16px;font-weight:800;margin-top:21px;cursor:pointer}
+button:disabled{opacity:.65;cursor:wait}
+.message{display:none;margin-top:15px;padding:11px 12px;border-radius:10px;font-size:14px;line-height:1.4;overflow-wrap:anywhere}
+.error{display:block;background:#fff0f0;color:#a52828}
+.success{display:block;background:#effaf2;color:#216b36}
+.links{text-align:center;font-size:14px;margin-top:20px;color:#766e83}
+a{color:#7545dc;font-weight:700;text-decoration:none}
+.back{display:block;text-align:center;margin-top:18px;font-size:13px;color:#81798e}
+.privacy{background:#f7f4fc;border-radius:11px;padding:11px 12px;font-size:12px;color:#777084;line-height:1.5;margin-top:16px}
 </style>
 </head>
 <body>
-<div class="card">
-  <h1>VYBE</h1>
-  <p>Create your account</p>
+<main class="card">
+  <div class="logo">VYBE.</div>
+  <p class="tagline">Your world. Your people.</p>
+  <h1>Create your account</h1>
+  <p class="sub">Join VYBE with a username and password. No email or phone number is requested.</p>
 
   <form id="registerForm">
-    <input id="username" placeholder="Choose a username" required>
-    <input id="password" type="password" placeholder="Create password" required>
-    <input id="confirm" type="password" placeholder="Confirm password" required>
-    <button type="submit">Create Account</button>
+    <label for="username">Username</label>
+    <input id="username" name="username" type="text" placeholder="Choose a username" autocomplete="username" minlength="3" maxlength="20" autocapitalize="none" required>
+    <div class="hint">3–20 characters. Use lowercase letters, numbers or underscores.</div>
+
+    <label for="password">Password</label>
+    <input id="password" name="password" type="password" placeholder="Create a password" autocomplete="new-password" minlength="8" required>
+    <div class="hint">Use at least 8 characters.</div>
+
+    <label for="confirmPassword">Confirm password</label>
+    <input id="confirmPassword" name="confirmPassword" type="password" placeholder="Enter your password again" autocomplete="new-password" minlength="8" required>
+
+    <button id="registerButton" type="submit">Create Account</button>
+    <div id="message" class="message" role="status" aria-live="polite"></div>
   </form>
 
-  <p>Already have an account? <a href="Login.html">Log in</a></p>
-</div>
+  <div class="privacy">🔒 VYBE uses your username to create your account. Because you aren't providing an email or phone number, password recovery will need a separate recovery-code feature.</div>
+  <div class="links">Already on VYBE? <a href="Login.html">Log in</a></div>
+  <a class="back" href="index.html">← Back to VYBE</a>
+</main>
 
 <script type="module">
-  alert("VYBE registration script started!");
 import { supabase } from "./supabase.js";
 
-async function createAccount(event) {
+const form = document.getElementById("registerForm");
+const button = document.getElementById("registerButton");
+const message = document.getElementById("message");
+
+function showMessage(text, type) {
+  message.textContent = text;
+  message.className = "message " + type;
+}
+
+form.addEventListener("submit", async (event) => {
   event.preventDefault();
 
-  const username = document.getElementById("username").value.trim();
+  const username = document.getElementById("username").value.trim().toLowerCase();
   const password = document.getElementById("password").value;
-  const confirm = document.getElementById("confirm").value;
+  const confirmPassword = document.getElementById("confirmPassword").value;
 
-  if (username.length < 3) {
-    alert("Username must be at least 3 characters.");
+  if (!/^[a-z0-9_]{3,20}$/.test(username)) {
+    showMessage("Username must be 3–20 characters and use lowercase letters, numbers, or underscores.", "error");
     return;
   }
 
   if (password.length < 8) {
-    alert("Password must be at least 8 characters.");
+    showMessage("Password must be at least 8 characters.", "error");
     return;
   }
 
-  if (password !== confirm) {
-    alert("Passwords do not match!");
+  if (password !== confirmPassword) {
+    showMessage("The passwords do not match.", "error");
     return;
   }
+
+  button.disabled = true;
+  button.textContent = "Creating account…";
+  message.className = "message";
+  message.textContent = "";
 
   try {
     const { data, error } = await supabase.functions.invoke("auth", {
       body: {
         action: "register",
-        username: username,
-        password: password
+        username,
+        password
       }
     });
 
-    if (error) throw error;
-
-    if (!data || !data.session) {
-      throw new Error("Registration did not return a login session.");
+    if (error) {
+      let detail = error.message || "Could not contact the registration service.";
+      if (error.context && typeof error.context.json === "function") {
+        try {
+          const body = await error.context.json();
+          if (body && body.error) detail = body.error;
+        } catch (_) {}
+      }
+      throw new Error(detail);
     }
 
-    const { error: sessionError } = await supabase.auth.setSession({
-      access_token: data.session.access_token,
-      refresh_token: data.session.refresh_token
-    });
+    if (!data || !data.user) {
+      throw new Error((data && data.error) || "Registration did not return an account. Please try again.");
+    }
 
-    if (sessionError) throw sessionError;
+    if (data.session && data.session.access_token && data.session.refresh_token) {
+      const { error: sessionError } = await supabase.auth.setSession({
+        access_token: data.session.access_token,
+        refresh_token: data.session.refresh_token
+      });
+      if (sessionError) throw sessionError;
 
-    alert("Welcome to VYBE! Your account has been created.");
-    window.location.href = "index.html";
+      showMessage("Your VYBE account is ready! Opening your feed…", "success");
+      window.location.replace("index.html");
+      return;
+    }
 
+    showMessage("Account created. Please log in with your new username and password.", "success");
+    button.disabled = false;
+    button.textContent = "Create Account";
+    form.reset();
   } catch (error) {
-    alert("Registration error: " + error.message);
+    showMessage(error.message || "Registration failed. Please try again.", "error");
+    button.disabled = false;
+    button.textContent = "Create Account";
   }
-}
-
-document.getElementById("registerForm").addEventListener("submit", createAccount);
-      </script>
-
+});
+</script>
 </body>
 </html>
