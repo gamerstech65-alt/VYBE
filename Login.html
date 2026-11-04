@@ -93,8 +93,10 @@ async function loginUser(event) {
       }
     });
 
-    if (error) throw error;
-
+    if (error) {
+  alert("Supabase error: " + JSON.stringify(error));
+  return;
+    }
     if (!data || !data.session) {
       throw new Error("Login did not return a session.");
     }
