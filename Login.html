@@ -2,111 +2,105 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>VYBE Login</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#7545dc">
+<title>Log In — VYBE</title>
 <style>
 *{box-sizing:border-box}
-body{
-margin:0;
-font-family:Arial,sans-serif;
-background:#f7f5fc;
-min-height:100vh;
-display:grid;
-place-items:center;
-padding:20px;
-}
-.card{
-background:white;
-width:100%;
-max-width:400px;
-padding:30px 24px;
-border-radius:22px;
-box-shadow:0 8px 35px #0000000d;
-}
-.logo{
-text-align:center;
-font-size:38px;
-font-weight:900;
-color:#7545dc;
-}
-.subtitle{text-align:center;color:#888}
-h2{font-size:23px}
-label{display:block;margin:16px 0 7px;font-weight:bold}
-input{
-width:100%;
-padding:14px;
-border:1px solid #ddd;
-border-radius:10px;
-font-size:16px;
-}
-button{
-width:100%;
-padding:14px;
-border:0;
-border-radius:12px;
-background:#7545dc;
-color:white;
-font-weight:bold;
-font-size:16px;
-margin-top:22px;
-}
-.links{text-align:center;margin-top:20px;font-size:14px}
-a{color:#7545dc;text-decoration:none}
+body{margin:0;min-height:100vh;background:linear-gradient(135deg,#f7f3ff,#eee7fb);font-family:Arial,Helvetica,sans-serif;color:#272238;display:grid;place-items:center;padding:20px}
+.card{width:min(100%,420px);background:#fff;border:1px solid #eee8f8;border-radius:22px;padding:30px;box-shadow:0 18px 55px #4d2a8817}
+.logo{font-size:34px;font-weight:950;letter-spacing:-2px;color:#7545dc;text-align:center}
+.tagline{text-align:center;color:#81798e;margin:5px 0 25px}
+h1{font-size:23px;margin:0 0 7px}
+.sub{color:#81798e;font-size:14px;margin:0 0 22px}
+label{display:block;font-weight:700;font-size:14px;margin:15px 0 7px}
+input{width:100%;border:1px solid #e4deee;border-radius:11px;padding:13px 14px;font-size:16px;outline:none}
+input:focus{border-color:#9670e8;box-shadow:0 0 0 3px #7545dc18}
+button{width:100%;border:0;border-radius:12px;padding:14px;background:#7545dc;color:white;font-size:16px;font-weight:800;margin-top:21px;cursor:pointer}
+button:disabled{opacity:.65;cursor:wait}
+.message{display:none;margin-top:15px;padding:11px 12px;border-radius:10px;font-size:14px;line-height:1.4;overflow-wrap:anywhere}
+.error{display:block;background:#fff0f0;color:#a52828}
+.success{display:block;background:#effaf2;color:#216b36}
+.links{text-align:center;font-size:14px;margin-top:20px;color:#766e83}
+a{color:#7545dc;font-weight:700;text-decoration:none}
+.back{display:block;text-align:center;margin-top:18px;font-size:13px;color:#81798e}
 </style>
 </head>
 <body>
-<div class="card">
-<div class="logo">VYBE.</div>
-<p class="subtitle">Your people. Your world.</p>
-<h2>Welcome back 👋</h2>
+<main class="card">
+  <div class="logo">VYBE.</div>
+  <p class="tagline">Your world. Your people.</p>
+  <h1>Welcome back</h1>
+  <p class="sub">Log in to continue to your VYBE.</p>
 
-<form id="loginForm">
-<label>Username</label>
-<input id="username" type="text" placeholder="Enter username" required>
+  <form id="loginForm">
+    <label for="username">Username</label>
+    <input id="username" name="username" type="text" placeholder="Enter username" autocomplete="username" minlength="3" maxlength="20" required>
+    <label for="password">Password</label>
+    <input id="password" name="password" type="password" placeholder="Enter password" autocomplete="current-password" required>
+    <button id="loginButton" type="submit">Log In</button>
+    <div id="message" class="message" role="status" aria-live="polite"></div>
+  </form>
 
-<label>Password</label>
-<input id="password" type="password" placeholder="Enter password" required>
+  <div class="links">New to VYBE? <a href="Register.html">Create an account</a></div>
+  <a class="back" href="index.html">← Back to VYBE</a>
+</main>
 
-<button type="submit">Log In</button>
-</form>
-
-<div class="links">
-<p><a href="#">Forgot password?</a></p>
-<p>New to VYBE? <a href="Register.html">Create account</a></p>
-</div>
-</div>
 <script type="module">
 import { supabase } from "./supabase.js";
 
-async function loginUser(event) {
+const form = document.getElementById("loginForm");
+const button = document.getElementById("loginButton");
+const message = document.getElementById("message");
+
+function showMessage(text, type) {
+  message.textContent = text;
+  message.className = "message " + type;
+}
+
+form.addEventListener("submit", async (event) => {
   event.preventDefault();
 
-  const username = document.getElementById("username").value.trim();
+  const username = document.getElementById("username").value.trim().toLowerCase();
   const password = document.getElementById("password").value;
+
+  if (!/^[a-z0-9_]{3,20}$/.test(username)) {
+    showMessage("Username must be 3–20 characters and use letters, numbers, or underscores.", "error");
+    return;
+  }
+
+  if (!password) {
+    showMessage("Please enter your password.", "error");
+    return;
+  }
+
+  button.disabled = true;
+  button.textContent = "Logging in…";
+  message.className = "message";
+  message.textContent = "";
 
   try {
     const { data, error } = await supabase.functions.invoke("auth", {
       body: {
         action: "login",
-        username: username,
-        password: password
+        username,
+        password
       }
     });
 
     if (error) {
-  let details = "No additional details available.";
-
-  try {
-    details = JSON.stringify(await error.context.json());
-  } catch (e) {
-    details = error.message;
-  }
-
-  alert("Actual login error: " + details);
-  return;
+      let detail = error.message || "Could not contact the login service.";
+      if (error.context && typeof error.context.json === "function") {
+        try {
+          const body = await error.context.json();
+          if (body && body.error) detail = body.error;
+        } catch (_) {}
+      }
+      throw new Error(detail);
     }
-    if (!data || !data.session) {
-      throw new Error("Login did not return a session.");
+
+    if (!data || !data.session || !data.session.access_token || !data.session.refresh_token) {
+      throw new Error((data && data.error) || "Login did not return a valid session. Please try again.");
     }
 
     const { error: sessionError } = await supabase.auth.setSession({
@@ -116,15 +110,14 @@ async function loginUser(event) {
 
     if (sessionError) throw sessionError;
 
-    alert("Welcome back to VYBE!");
-    window.location.href = "index.html";
-
+    showMessage("Welcome back! Opening VYBE…", "success");
+    window.location.replace("index.html");
   } catch (error) {
-    alert("Login error: " + error.message);
+    showMessage(error.message || "Login failed. Please try again.", "error");
+    button.disabled = false;
+    button.textContent = "Log In";
   }
-}
-
-document.getElementById("loginForm").addEventListener("submit", loginUser);
-          </script>
+});
+</script>
 </body>
 </html>
