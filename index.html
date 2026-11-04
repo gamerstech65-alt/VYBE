@@ -108,6 +108,47 @@ button.textContent='♡ Like';
 button.style.color='';
 }
 }
+  <script type="module">
+import { supabase } from "./supabase.js";
+
+async function updateLoginDisplay() {
+  const loginLink = document.querySelector('header a[href="Login.html"]');
+  if (!loginLink) return;
+
+  const { data: { session } } = await supabase.auth.getSession();
+
+  if (session) {
+    const { data: profile } = await supabase
+      .from("profiles")
+      .select("username")
+      .eq("id", session.user.id)
+      .maybeSingle();
+
+    const username =
+      profile?.username ||
+      session.user.user_metadata?.username ||
+      "My Account";
+
+    loginLink.textContent = "@" + username;
+    loginLink.href = "#";
+
+    const logoutButton = document.createElement("button");
+    logoutButton.textContent = "Log Out";
+    logoutButton.className = "purple";
+    logoutButton.style.marginLeft = "10px";
+
+    logoutButton.onclick = async () => {
+      await supabase.auth.signOut();
+      window.location.reload();
+    };
+
+    loginLink.after(logoutButton);
+  }
+}
+
+updateLoginDisplay();
 </script>
+</script>
+
 </body>
 </html>
