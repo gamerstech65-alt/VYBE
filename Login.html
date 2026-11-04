@@ -94,7 +94,15 @@ async function loginUser(event) {
     });
 
     if (error) {
-  alert("Supabase error: " + JSON.stringify(error));
+  let details = "No additional details available.";
+
+  try {
+    details = JSON.stringify(await error.context.json());
+  } catch (e) {
+    details = error.message;
+  }
+
+  alert("Actual login error: " + details);
   return;
     }
     if (!data || !data.session) {
