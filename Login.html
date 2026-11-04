@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VYBE Login</title>
+<style>
+*{box-sizing:border-box}
+body{
+margin:0;
+font-family:Arial,sans-serif;
+background:#f7f5fc;
+min-height:100vh;
+display:grid;
+place-items:center;
+padding:20px;
+}
+.card{
+background:white;
+width:100%;
+max-width:400px;
+padding:30px 24px;
+border-radius:22px;
+box-shadow:0 8px 35px #0000000d;
+}
+.logo{
+text-align:center;
+font-size:38px;
+font-weight:900;
+color:#7545dc;
+}
+.subtitle{text-align:center;color:#888}
+h2{font-size:23px}
+label{display:block;margin:16px 0 7px;font-weight:bold}
+input{
+width:100%;
+padding:14px;
+border:1px solid #ddd;
+border-radius:10px;
+font-size:16px;
+}
+button{
+width:100%;
+padding:14px;
+border:0;
+border-radius:12px;
+background:#7545dc;
+color:white;
+font-weight:bold;
+font-size:16px;
+margin-top:22px;
+}
+.links{text-align:center;margin-top:20px;font-size:14px}
+a{color:#7545dc;text-decoration:none}
+</style>
+</head>
+<body>
+<div class="card">
+<div class="logo">VYBE.</div>
+<p class="subtitle">Your people. Your world.</p>
+<h2>Welcome back 👋</h2>
+
+<form onsubmit="event.preventDefault();alert('Login system will be connected soon!')">
+<label>Username</label>
+<input type="text" placeholder="Enter username" required>
+
+<label>Password</label>
+<input type="password" placeholder="Enter password" required>
+
+<button type="submit">Log In</button>
+</form>
+
+<div class="links">
+<p><a href="#">Forgot password?</a></p>
+<p>New to VYBE? <a href="Register.html">Create account</a></p>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>VYBE — Your Social World</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#f7f7fa;color:#20202a;font-family:Arial,sans-serif}
+header{background:white;padding:16px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #eee;position:sticky;top:0}
+.logo{font-size:28px;font-weight:900;color:#7545dc}
+main{max-width:650px;margin:auto;background:white;min-height:100vh;padding-bottom:75px}
+h2{font-size:21px;margin:20px 15px}
+.stories{display:flex;gap:16px;overflow-x:auto;padding:10px 15px 20px;border-bottom:1px solid #eee}
+.story{text-align:center;min-width:62px;font-size:12px}
+.circle{width:55px;height:55px;border-radius:50%;background:linear-gradient(135deg,#7545dc,#c28cff);border:3px solid white;outline:2px solid #8d60ec;margin:auto auto 7px;display:grid;place-items:center;color:white;font-size:23px}
+.compose{padding:16px;border-bottom:8px solid #f7f7fa}
+.compose input{width:90%;border:0;padding:12px;font-size:15px;outline:none}
+button{cursor:pointer}
+.purple{background:#7545dc;color:white;border:0;border-radius:22px;padding:10px 19px;font-weight:bold}
+.post{padding:16px;border-bottom:1px solid #eee}
+.user{display:flex;gap:10px;align-items:center}
+.avatar{width:42px;height:42px;border-radius:50%;background:#eee;display:grid;place-items:center;font-size:20px}
+small{color:#888}
+.post p{line-height:1.5}
+.photo{height:230px;border-radius:13px;background:linear-gradient(135deg,#7545dc,#b28af8,#e7d9ff);display:grid;place-items:center;color:white;font-size:35px;font-weight:bold;margin-top:12px}
+.actions{display:flex;justify-content:space-between;max-width:390px;margin-top:16px;color:#777}
+.actions button{border:0;background:none;color:inherit;font-size:14px}
+.actions button:focus{color:#7545dc}
+nav{position:fixed;bottom:0;left:0;right:0;background:white;border-top:1px solid #eee;display:flex;justify-content:space-around;padding:15px 2px;z-index:5}
+nav button{border:0;background:none;font-size:12px;color:#555}
+nav button:first-child{color:#7545dc;font-weight:bold}
+.trending{background:#f7f5fc;margin:15px;padding:15px;border-radius:14px}
+.trending p{margin:12px 0;font-size:14px}
+</style>
+</head>
+<body>
+<header>
+  <a href="Login.html" style="color:#7545dc;text-decoration:none;font-weight:bold">Log In</a>
+<div class="logo">VYBE.</div>
+<div>🔍　♡　✉</div>
+</header>
+<main>
+<h2>Your VYBE feed ✨</h2>
+
+<div class="stories">
+<div class="story"><div class="circle">＋</div>Your story</div>
+<div class="story"><div class="circle">😎</div>Alex</div>
+<div class="story"><div class="circle">🌸</div>Sara</div>
+<div class="story"><div class="circle">🔥</div>Ryan</div>
+<div class="story"><div class="circle">🎧</div>Music</div>
+</div>
+
+<div class="compose">
+<input id="thought" placeholder="What's happening in your world?">
+<button class="purple" onclick="publish()">Post</button>
+</div>
+
+<div id="feed">
+<article class="post">
+<div class="user"><div class="avatar">V</div><div><b>vybe.community</b><br><small>@vybe · Welcome</small></div></div>
+<p>Welcome to VYBE! Your thoughts, your pictures, your people. 💜</p>
+<div class="photo">YOUR WORLD ✨</div>
+<div class="actions">
+<button onclick="like(this)">♡ Like</button>
+<button onclick="alert('Comments coming soon!')">◯ Comment</button>
+<button onclick="alert('Repost coming soon!')">🔁 Repost</button>
+<button onclick="alert('Share coming soon!')">↗ Share</button>
+</div>
+</article>
+</div>
+
+<div class="trending">
+<b>🔥 Trending on VYBE</b>
+<p>#VYBECommunity</p>
+<p>#Photography</p>
+<p>#Music</p>
+<p>#DailyThoughts</p>
+</div>
+</main>
+
+<nav>
+<button>⌂ Home</button>
+<button>🔍 Explore</button>
+<button onclick="document.getElementById('thought').focus()">＋ Create</button>
+<button onclick="alert('SPACES coming soon!')">▣ Spaces</button>
+<button onclick="alert('Profile coming soon!')">◉ Profile</button>
+</nav>
+
+<script>
+function publish(){
+const input=document.getElementById('thought');
+const text=input.value.trim();
+if(!text)return;
+const post=document.createElement('article');
+post.className='post';
+post.innerHTML='<div class="user"><div class="avatar">Y</div><b>You</b></div><p></p><div class="actions"><button onclick="like(this)">♡ Like</button><button>◯ Comment</button><button>🔁 Repost</button><button>↗ Share</button></div>';
+post.querySelector('p').textContent=text;
+document.getElementById('feed').prepend(post);
+input.value='';
+}
+function like(button){
+if(button.textContent.includes('♡')){
+button.textContent='♥ Liked';
+button.style.color='#7545dc';
+}else{
+button.textContent='♡ Like';
+button.style.color='';
+}
+}
+</script>
+</body>
+</html>
