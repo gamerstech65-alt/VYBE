@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,7 +19,8 @@ a{color:inherit;text-decoration:none}
 .header-actions{display:flex;align-items:center;gap:10px}
 .auth-area{display:flex;align-items:center;gap:10px}
 .btn{border:0;border-radius:22px;padding:10px 17px;font-weight:750}
-.primary{background:var(--purple);color:white}.soft{background:#f0eafb;color:var(--purple)}
+.primary{background:var(--purple);color:white}
+.soft{background:#f0eafb;color:var(--purple)}
 .iconbtn{border:0;background:transparent;font-size:20px;padding:7px;color:#5f596d}
 .avatar{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--purple),#d6bfff);color:white;display:grid;place-items:center;font-weight:800;flex:none}
 .layout{max-width:1120px;margin:22px auto;display:grid;grid-template-columns:220px minmax(0,620px) 240px;gap:20px;padding:0 14px}
@@ -42,7 +44,8 @@ a{color:inherit;text-decoration:none}
 .compose-tools{display:flex;gap:15px;color:var(--purple);font-size:14px}
 .post{padding:17px 18px;border-top:1px solid var(--line)}
 .post-head{display:flex;gap:10px;align-items:center}
-.post-name{font-weight:800}.handle{font-size:12px;color:var(--muted);margin-top:2px}
+.post-name{font-weight:800}
+.handle{font-size:12px;color:var(--muted);margin-top:2px}
 .post-menu{margin-left:auto;border:0;background:transparent;color:var(--muted);font-size:20px}
 .post-text{line-height:1.55;margin:14px 0;white-space:pre-wrap;overflow-wrap:anywhere}
 .post-art{height:260px;border-radius:14px;background:linear-gradient(135deg,#6e40d5,#b48af2 60%,#f0dafa);display:grid;place-items:center;color:white;font-size:35px;font-weight:950;letter-spacing:1px}
@@ -51,156 +54,564 @@ a{color:inherit;text-decoration:none}
 .post-actions button:hover,.post-actions button.liked{color:var(--purple)}
 .rightbox .panel{padding:16px}
 .trend{padding:11px 0;border-bottom:1px solid var(--line)}
-.trend:last-child{border:0}.trend small{display:block;color:var(--muted);margin-bottom:4px}.trend b{font-size:14px}
-.mini-user{display:flex;align-items:center;gap:10px;margin:12px 0}
-.mini-user .btn{margin-left:auto;padding:7px 12px;font-size:12px}
+.trend:last-child{border:0}
+.trend small{display:block;color:var(--muted);margin-bottom:4px}
+.trend b{font-size:14px}
 .bottomnav{display:none}
-.view{display:none}.view.active{display:block}
+.view{display:none}
+.view.active{display:block}
 .empty{padding:35px 18px;text-align:center;color:var(--muted)}
 .profile-cover{height:145px;background:linear-gradient(120deg,#7042d2,#bd9af5,#f1dafa)}
-.profile-info{padding:0 18px 18px}.profile-info .avatar{width:78px;height:78px;border:4px solid white;margin-top:-38px;font-size:26px}
+.profile-info{padding:0 18px 18px}
+.profile-info .avatar{width:78px;height:78px;border:4px solid white;margin-top:-38px;font-size:26px}
 .profile-stats{display:flex;gap:22px;margin-top:15px;color:#696475;font-size:14px}
 .toast{position:fixed;bottom:85px;left:50%;transform:translateX(-50%);background:#292334;color:white;padding:11px 17px;border-radius:22px;z-index:50;display:none;max-width:90%;font-size:14px}
+.user-result{display:flex;align-items:center;gap:12px;padding:13px 0;border-bottom:1px solid var(--line)}
+.user-result:last-child{border-bottom:0}
+.user-result-info{min-width:0;flex:1}
+.user-result-name{font-weight:800;overflow-wrap:anywhere}
+.user-result-handle{font-size:12px;color:var(--muted);margin-top:3px}
+.follow-button{border:0;border-radius:20px;padding:9px 15px;font-size:13px;font-weight:750;background:var(--purple);color:white;min-width:90px}
+.follow-button.following{background:#f0eafb;color:var(--purple)}
+.follow-button:disabled{opacity:.6;cursor:wait}
+.search-status{font-size:13px;color:var(--muted);padding:12px 0}
 @media(max-width:900px){.layout{grid-template-columns:190px minmax(0,1fr)}.rightbox{display:none}}
-@media(max-width:650px){.topbar{padding:0 13px;height:58px}.search{width:36vw}.layout{display:block;margin:12px auto;padding:0 9px}.sidebar{display:none}.bottomnav{position:fixed;bottom:0;left:0;right:0;z-index:30;background:#fff;border-top:1px solid var(--line);display:flex;justify-content:space-around;padding:8px 3px calc(8px + env(safe-area-inset-bottom))}.bottomnav button{border:0;background:transparent;color:#6d6878;font-size:11px;display:grid;gap:3px;justify-items:center}.bottomnav button span{font-size:20px}.bottomnav button.active{color:var(--purple);font-weight:800}.panel{border-radius:13px}.post-art{height:220px}.header-actions .search{display:none}.logo{font-size:25px}}
+@media(max-width:650px){
+.topbar{padding:0 13px;height:58px}
+.search{width:36vw}
+.layout{display:block;margin:12px auto;padding:0 9px}
+.sidebar{display:none}
+.bottomnav{position:fixed;bottom:0;left:0;right:0;z-index:30;background:#fff;border-top:1px solid var(--line);display:flex;justify-content:space-around;padding:8px 3px calc(8px + env(safe-area-inset-bottom))}
+.bottomnav button{border:0;background:transparent;color:#6d6878;font-size:11px;display:grid;gap:3px;justify-items:center}
+.bottomnav button span{font-size:20px}
+.bottomnav button.active{color:var(--purple);font-weight:800}
+.panel{border-radius:13px}
+.post-art{height:220px}
+.header-actions .search{display:none}
+.logo{font-size:25px}
+}
 </style>
 </head>
 <body>
+
 <header class="topbar">
-  <a class="logo" href="index.html">VYBE.</a>
-  <input class="search" id="searchBox" placeholder="Search VYBE..." aria-label="Search VYBE">
-  <div class="header-actions">
-    <button class="iconbtn" title="Search" onclick="document.getElementById('searchBox').focus()">⌕</button>
-    <div class="auth-area" id="authArea"><a class="btn soft" href="Login.html">Log In</a><a class="btn primary" href="Register.html">Join</a></div>
-  </div>
+<a class="logo" href="index.html">VYBE.</a>
+<input class="search" id="searchBox" placeholder="Search VYBE..." aria-label="Search VYBE">
+<div class="header-actions">
+<button class="iconbtn" title="Search" onclick="document.getElementById('searchBox').focus()">⌕</button>
+<div class="auth-area" id="authArea">
+<a class="btn soft" href="Login.html">Log In</a>
+<a class="btn primary" href="Register.html">Join</a>
+</div>
+</div>
 </header>
 
 <div class="layout">
-  <aside class="sidebar">
-    <button class="side-link active" data-view="home"><span class="side-icon">⌂</span>Home</button>
-    <button class="side-link" data-view="explore"><span class="side-icon">⌕</span>Explore</button>
-    <button class="side-link" data-view="notifications"><span class="side-icon">♡</span>Notifications</button>
-    <button class="side-link" data-view="messages"><span class="side-icon">✉</span>Messages</button>
-    <button class="side-link" data-view="profile"><span class="side-icon">◉</span>Profile</button>
-    <button class="btn primary side-create" onclick="goView('create')">＋ Create post</button>
-    <p style="font-size:12px;color:#999;padding:10px">Your world. Your people. Your VYBE. 💜</p>
-  </aside>
+<aside class="sidebar">
+<button class="side-link active" data-view="home"><span class="side-icon">⌂</span>Home</button>
+<button class="side-link" data-view="explore"><span class="side-icon">⌕</span>Explore</button>
+<button class="side-link" data-view="notifications"><span class="side-icon">♡</span>Notifications</button>
+<button class="side-link" data-view="messages"><span class="side-icon">✉</span>Messages</button>
+<button class="side-link" data-view="profile"><span class="side-icon">◉</span>Profile</button>
+<button class="btn primary side-create" onclick="goView('create')">＋ Create post</button>
+<p style="font-size:12px;color:#999;padding:10px">Your world. Your people. Your VYBE. 💜</p>
+</aside>
 
-  <main>
-    <section class="view active" id="view-home">
-      <div class="panel">
-        <div class="stories">
-          <div class="story"><div class="story-ring"><div class="story-inner">＋</div></div><div class="story-name">Your story</div></div>
-          <div class="story"><div class="story-ring"><div class="story-inner">😎</div></div><div class="story-name">Alex</div></div>
-          <div class="story"><div class="story-ring"><div class="story-inner">🌸</div></div><div class="story-name">Sara</div></div>
-          <div class="story"><div class="story-ring"><div class="story-inner">🔥</div></div><div class="story-name">Ryan</div></div>
-          <div class="story"><div class="story-ring"><div class="story-inner">🎧</div></div><div class="story-name">Music</div></div>
-          <div class="story"><div class="story-ring"><div class="story-inner">🌊</div></div><div class="story-name">Travel</div></div>
-        </div>
-      </div>
-      <div class="panel">
-        <div class="compose">
-          <div class="compose-row"><div class="avatar" id="composeAvatar">V</div><textarea id="postText" placeholder="What's happening in your world?"></textarea></div>
-          <div class="compose-bottom"><div class="compose-tools"><span>▧ Photo</span><span>☺ Feeling</span><span># Tag</span></div><button class="btn primary" onclick="createPost()">Post</button></div>
-        </div>
-      </div>
-      <div class="panel">
-        <div class="feed-head"><h2 class="section-title">Your VYBE feed ✨</h2><span style="font-size:12px;color:var(--muted)">For you</span></div>
-        <div id="feed">
-          <article class="post">
-            <div class="post-head"><div class="avatar">V</div><div><div class="post-name">vybe.community</div><div class="handle">@vybe · Welcome</div></div><button class="post-menu">···</button></div>
-            <p class="post-text">Welcome to VYBE! Your thoughts, your pictures, your people. This is where your world comes together. 💜</p>
-            <div class="post-art">YOUR WORLD ✨</div>
-            <div class="post-actions"><button onclick="likePost(this)">♡ <span>Like</span></button><button onclick="featureNotice('Comments')">◯ Comment</button><button onclick="featureNotice('Reposts')">↻ Repost</button><button onclick="featureNotice('Sharing')">↗ Share</button></div>
-          </article>
-        </div>
-      </div>
-    </section>
+<main>
+<section class="view active" id="view-home">
+<div class="panel">
+<div class="stories">
+<div class="story"><div class="story-ring"><div class="story-inner">＋</div></div><div class="story-name">Your story</div></div>
+<div class="story"><div class="story-ring"><div class="story-inner">😎</div></div><div class="story-name">Alex</div></div>
+<div class="story"><div class="story-ring"><div class="story-inner">🌸</div></div><div class="story-name">Sara</div></div>
+<div class="story"><div class="story-ring"><div class="story-inner">🔥</div></div><div class="story-name">Ryan</div></div>
+<div class="story"><div class="story-ring"><div class="story-inner">🎧</div></div><div class="story-name">Music</div></div>
+<div class="story"><div class="story-ring"><div class="story-inner">🌊</div></div><div class="story-name">Travel</div></div>
+</div>
+</div>
 
-    <section class="view" id="view-explore"><div class="panel" style="padding:18px"><h2 class="section-title">Explore VYBE</h2><p style="color:var(--muted)">Discover conversations, creators and communities.</p><div class="trend"><small>Trending</small><b>#VYBECommunity</b></div><div class="trend"><small>Photography</small><b>#Photography</b></div><div class="trend"><small>Music</small><b>#Music</b></div><div class="trend"><small>Daily thoughts</small><b>#DailyThoughts</b></div></div></section>
-    <section class="view" id="view-create"><div class="panel" style="padding:18px"><h2 class="section-title">Create a post</h2><textarea id="createText" placeholder="Share what's on your mind..." style="width:100%;min-height:150px;border:1px solid var(--line);border-radius:12px;padding:13px;outline-color:var(--purple)"></textarea><div style="display:flex;justify-content:flex-end;margin-top:12px"><button class="btn primary" onclick="createPost('createText')">Publish</button></div></div></section>
-    <section class="view" id="view-notifications"><div class="panel"><div style="padding:18px"><h2 class="section-title">Notifications</h2><div class="empty">Your notifications will appear here when the notification system is connected.</div></div></div></section>
-    <section class="view" id="view-messages"><div class="panel"><div style="padding:18px"><h2 class="section-title">Messages</h2><div class="empty">Your private conversations will appear here when messaging is connected.</div></div></div></section>
-    <section class="view" id="view-profile"><div class="panel"><div class="profile-cover"></div><div class="profile-info"><div class="avatar" id="profileAvatar">V</div><h2 id="profileName" style="margin:10px 0 2px">Your profile</h2><div id="profileHandle" class="handle">@yourusername</div><p style="color:var(--muted)">Your VYBE profile and posts will appear here.</p><div class="profile-stats"><span><b>0</b> Posts</span><span><b>0</b> Followers</span><span><b>0</b> Following</span></div><button class="btn soft" style="margin-top:15px" onclick="featureNotice('Profile editing')">Edit profile</button></div></div></section>
-  </main>
+<div class="panel">
+<div class="compose">
+<div class="compose-row">
+<div class="avatar" id="composeAvatar">V</div>
+<textarea id="postText" placeholder="What's happening in your world?"></textarea>
+</div>
+<div class="compose-bottom">
+<div class="compose-tools"><span>▧ Photo</span><span>☺ Feeling</span><span># Tag</span></div>
+<button class="btn primary" onclick="createPost()">Post</button>
+</div>
+</div>
+</div>
 
-  <aside class="rightbox">
-    <div class="panel"><h3 style="margin:0 0 8px">🔥 Trending on VYBE</h3><div class="trend"><small>Community</small><b>#VYBECommunity</b></div><div class="trend"><small>Photography</small><b>#Photography</b></div><div class="trend"><small>Music</small><b>#Music</b></div><div class="trend"><small>Today</small><b>#DailyThoughts</b></div></div>
-    <div class="panel"><h3 style="margin:0">Who to follow</h3><p style="font-size:12px;color:var(--muted)">Creator suggestions will appear here.</p><div class="mini-user"><div class="avatar">A</div><div><b style="font-size:13px">Alex</b><div class="handle">@alex</div></div><button class="btn soft" onclick="featureNotice('Following')">Follow</button></div><div class="mini-user"><div class="avatar">S</div><div><b style="font-size:13px">Sara</b><div class="handle">@sara</div></div><button class="btn soft" onclick="featureNotice('Following')">Follow</button></div></div>
-  </aside>
+<div class="panel">
+<div class="feed-head">
+<h2 class="section-title">Your VYBE feed ✨</h2>
+<span style="font-size:12px;color:var(--muted)">For you</span>
+</div>
+<div id="feed">
+<article class="post">
+<div class="post-head">
+<div class="avatar">V</div>
+<div><div class="post-name">vybe.community</div><div class="handle">@vybe · Welcome</div></div>
+<button class="post-menu">···</button>
+</div>
+<p class="post-text">Welcome to VYBE! Your thoughts, your pictures, your people. This is where your world comes together. 💜</p>
+<div class="post-art">YOUR WORLD ✨</div>
+<div class="post-actions">
+<button onclick="likePost(this)">♡ <span>Like</span></button>
+<button onclick="featureNotice('Comments')">◯ Comment</button>
+<button onclick="featureNotice('Reposts')">↻ Repost</button>
+<button onclick="featureNotice('Sharing')">↗ Share</button>
+</div>
+</article>
+</div>
+</div>
+</section>
+
+<section class="view" id="view-explore">
+<div class="panel" style="padding:18px">
+<h2 class="section-title">Explore VYBE 🔍</h2>
+<p style="color:var(--muted)">Find people and follow your friends.</p>
+<input id="userSearch" placeholder="Search by username..." style="width:100%;padding:13px;border:1px solid var(--line);border-radius:12px;outline-color:var(--purple)">
+<div id="userResults">
+<div class="empty">Search for a username to find people.</div>
+</div>
+</div>
+</section>
+
+<section class="view" id="view-create">
+<div class="panel" style="padding:18px">
+<h2 class="section-title">Create a post</h2>
+<textarea id="createText" placeholder="Share what's on your mind..." style="width:100%;min-height:150px;border:1px solid var(--line);border-radius:12px;padding:13px;outline-color:var(--purple)"></textarea>
+<div style="display:flex;justify-content:flex-end;margin-top:12px">
+<button class="btn primary" onclick="createPost('createText')">Publish</button>
+</div>
+</div>
+</section>
+
+<section class="view" id="view-notifications">
+<div class="panel">
+<div style="padding:18px">
+<h2 class="section-title">Notifications</h2>
+<div class="empty">Your notifications will appear here when the notification system is connected.</div>
+</div>
+</div>
+</section>
+
+<section class="view" id="view-messages">
+<div class="panel">
+<div style="padding:18px">
+<h2 class="section-title">Messages</h2>
+<div class="empty">Your private conversations will appear here when messaging is connected.</div>
+</div>
+</div>
+</section>
+
+<section class="view" id="view-profile">
+<div class="panel">
+<div class="profile-cover"></div>
+<div class="profile-info">
+<div class="avatar" id="profileAvatar">V</div>
+<h2 id="profileName" style="margin:10px 0 2px">Your profile</h2>
+<div id="profileHandle" class="handle">@yourusername</div>
+<p style="color:var(--muted)">Your VYBE profile and posts will appear here.</p>
+<div class="profile-stats">
+<span><b>0</b> Posts</span>
+<span><b id="myFollowers">0</b> Followers</span>
+<span><b id="myFollowing">0</b> Following</span>
+</div>
+<button class="btn soft" style="margin-top:15px" onclick="featureNotice('Profile editing')">Edit profile</button>
+</div>
+</div>
+</section>
+</main>
+
+<aside class="rightbox">
+<div class="panel">
+<h3 style="margin:0 0 8px">🔥 Trending on VYBE</h3>
+<div class="trend"><small>Community</small><b>#VYBECommunity</b></div>
+<div class="trend"><small>Photography</small><b>#Photography</b></div>
+<div class="trend"><small>Music</small><b>#Music</b></div>
+<div class="trend"><small>Today</small><b>#DailyThoughts</b></div>
+</div>
+<div class="panel">
+<h3 style="margin:0">Who to follow</h3>
+<p style="font-size:12px;color:var(--muted)">Find people in Explore.</p>
+</div>
+</aside>
 </div>
 
 <nav class="bottomnav">
-  <button class="active" data-view="home"><span>⌂</span>Home</button>
-  <button data-view="explore"><span>⌕</span>Explore</button>
-  <button data-view="create"><span>＋</span>Create</button>
-  <button data-view="notifications"><span>♡</span>Alerts</button>
-  <button data-view="profile"><span>◉</span>Profile</button>
+<button class="active" data-view="home"><span>⌂</span>Home</button>
+<button data-view="explore"><span>⌕</span>Explore</button>
+<button data-view="create"><span>＋</span>Create</button>
+<button data-view="notifications"><span>♡</span>Alerts</button>
+<button data-view="profile"><span>◉</span>Profile</button>
 </nav>
+
 <div class="toast" id="toast"></div>
 
 <script>
-function toast(message){const el=document.getElementById('toast');el.textContent=message;el.style.display='block';clearTimeout(window.toastTimer);window.toastTimer=setTimeout(()=>el.style.display='none',2800)}
-function featureNotice(name){toast(name+' will be enabled when its Supabase feature is connected.')}
+function toast(message){
+const el=document.getElementById('toast');
+el.textContent=message;
+el.style.display='block';
+clearTimeout(window.toastTimer);
+window.toastTimer=setTimeout(()=>el.style.display='none',2800);
+}
+function featureNotice(name){
+toast(name+' will be enabled when its Supabase feature is connected.');
+}
 function goView(name){
- document.querySelectorAll('.view').forEach(v=>v.classList.toggle('active',v.id==='view-'+name));
- document.querySelectorAll('[data-view]').forEach(b=>b.classList.toggle('active',b.dataset.view===name));
- window.scrollTo({top:0,behavior:'smooth'});
+document.querySelectorAll('.view').forEach(v=>v.classList.toggle('active',v.id==='view-'+name));
+document.querySelectorAll('[data-view]').forEach(b=>b.classList.toggle('active',b.dataset.view===name));
+window.scrollTo({top:0,behavior:'smooth'});
 }
-document.querySelectorAll('[data-view]').forEach(b=>b.addEventListener('click',()=>goView(b.dataset.view)));
-function requireLogin(){if(!window.vybeSession){toast('Please log in to use this feature.');return false}return true}
-function likePost(button){if(!requireLogin())return;button.classList.toggle('liked');const liked=button.classList.contains('liked');button.innerHTML=(liked?'♥ ':'♡ ')+(liked?'<span>Liked</span>':'<span>Like</span>');toast('Like interaction is ready for database connection.')}
+document.querySelectorAll('[data-view]').forEach(b=>{
+b.addEventListener('click',()=>goView(b.dataset.view));
+});
+function requireLogin(){
+if(!window.vybeSession){
+toast('Please log in to use this feature.');
+return false;
+}
+return true;
+}
+function likePost(button){
+if(!requireLogin())return;
+button.classList.toggle('liked');
+const liked=button.classList.contains('liked');
+button.innerHTML=(liked?'♥ ':'♡ ')+(liked?'<span>Liked</span>':'<span>Like</span>');
+toast('Like interaction is ready for database connection.');
+}
 function createPost(inputId='postText'){
- if(!requireLogin())return;
- const input=document.getElementById(inputId);const text=input.value.trim();if(!text){toast('Write something before posting.');return}
- const user=window.vybeUsername||'You';
- const post=document.createElement('article');post.className='post';
- const head=document.createElement('div');head.className='post-head';
- const avatar=document.createElement('div');avatar.className='avatar';avatar.textContent=user.charAt(0).toUpperCase();
- const identity=document.createElement('div');const name=document.createElement('div');name.className='post-name';name.textContent=user;const handle=document.createElement('div');handle.className='handle';handle.textContent='@'+user+' · just now';identity.append(name,handle);head.append(avatar,identity);
- const p=document.createElement('p');p.className='post-text';p.textContent=text;
- const actions=document.createElement('div');actions.className='post-actions';
- [['♡ Like',()=>likePost(actions.children[0])],['◯ Comment',()=>featureNotice('Comments')],['↻ Repost',()=>featureNotice('Reposts')],['↗ Share',()=>featureNotice('Sharing')]].forEach(([label,fn])=>{const b=document.createElement('button');b.textContent=label;b.onclick=fn;actions.append(b)});
- post.append(head,p,actions);document.getElementById('feed').prepend(post);input.value='';goView('home');toast('Post added to this page. Permanent posting needs the posts table.');
+if(!requireLogin())return;
+const input=document.getElementById(inputId);
+const text=input.value.trim();
+if(!text){toast('Write something before posting.');return;}
+const user=window.vybeUsername||'You';
+const post=document.createElement('article');
+post.className='post';
+const head=document.createElement('div');
+head.className='post-head';
+const avatar=document.createElement('div');
+avatar.className='avatar';
+avatar.textContent=user.charAt(0).toUpperCase();
+const identity=document.createElement('div');
+const name=document.createElement('div');
+name.className='post-name';
+name.textContent=user;
+const handle=document.createElement('div');
+handle.className='handle';
+handle.textContent='@'+user+' · just now';
+identity.append(name,handle);
+head.append(avatar,identity);
+const p=document.createElement('p');
+p.className='post-text';
+p.textContent=text;
+const actions=document.createElement('div');
+actions.className='post-actions';
+[['♡ Like',()=>likePost(actions.children[0])],['◯ Comment',()=>featureNotice('Comments')],['↻ Repost',()=>featureNotice('Reposts')],['↗ Share',()=>featureNotice('Sharing')]].forEach(([label,fn])=>{
+const b=document.createElement('button');
+b.textContent=label;
+b.onclick=fn;
+actions.append(b);
+});
+post.append(head,p,actions);
+document.getElementById('feed').prepend(post);
+input.value='';
+goView('home');
+toast('Post added to this page. Permanent posting needs the posts table.');
 }
-document.getElementById('searchBox').addEventListener('keydown',e=>{if(e.key==='Enter'){if(!requireLogin())return;toast('Search will be connected to user and post search.')}});
-</script>
-
+document.getElementById('searchBox').addEventListener('keydown',e=>{
+if(e.key==='Enter'){
+if(!requireLogin())return;
+document.getElementById('userSearch').value=e.target.value.trim();
+goView('explore');
+window.searchVYBEUsers?.();
+}
+});
+  </script>
+  
 <script type="module">
 import { supabase } from "./supabase.js";
+
 window.vybeSession = null;
 window.vybeUsername = null;
-const authArea = document.getElementById("authArea");
 
-async function refreshAuth(){
+const authArea = document.getElementById("authArea");
+const userSearch = document.getElementById("userSearch");
+const userResults = document.getElementById("userResults");
+
+function escapeText(value) {
+  return String(value).replace(/[&<>"']/g, c => ({
+    "&": "&amp;",
+    "<": "&lt;",
+    ">": "&gt;",
+    '"': "&quot;",
+    "'": "&#39;"
+  }[c]));
+}
+
+async function refreshProfileCounts(userId) {
+  const followersResult = await supabase
+    .from("follows")
+    .select("*", { count: "exact", head: true })
+    .eq("following_id", userId);
+
+  const followingResult = await supabase
+    .from("follows")
+    .select("*", { count: "exact", head: true })
+    .eq("follower_id", userId);
+
+  if (followersResult.error) {
+    console.warn("Followers count:", followersResult.error.message);
+  } else {
+    document.getElementById("myFollowers").textContent =
+      followersResult.count ?? 0;
+  }
+
+  if (followingResult.error) {
+    console.warn("Following count:", followingResult.error.message);
+  } else {
+    document.getElementById("myFollowing").textContent =
+      followingResult.count ?? 0;
+  }
+}
+
+async function refreshAuth() {
   const { data, error } = await supabase.auth.getSession();
-  if(error){console.error("VYBE session check:",error);return}
-  const session=data.session;
-  window.vybeSession=session;
-  if(!session){
-    authArea.innerHTML='<a class="btn soft" href="Login.html">Log In</a><a class="btn primary" href="Register.html">Join</a>';
+
+  if (error) {
+    console.error("Session check:", error);
     return;
   }
-  let username=session.user.user_metadata?.username || session.user.email?.split("@")[0] || "member";
-  const {data:profile,error:profileError}=await supabase.from("profiles").select("username,display_name").eq("id",session.user.id).maybeSingle();
-  if(profileError) console.warn("VYBE profile lookup:",profileError.message);
-  if(profile?.username) username=profile.username;
-  window.vybeUsername=username;
-  const display=profile?.display_name || username;
-  document.getElementById("profileName").textContent=display;
-  document.getElementById("profileHandle").textContent="@"+username;
-  document.getElementById("profileAvatar").textContent=username.charAt(0).toUpperCase();
-  document.getElementById("composeAvatar").textContent=username.charAt(0).toUpperCase();
-  authArea.innerHTML='<span style="font-weight:750;color:var(--purple)">@'+escapeText(username)+'</span><button class="btn soft" id="logoutBtn">Log Out</button>';
-  document.getElementById("logoutBtn").addEventListener("click",async()=>{
-    const {error}=await supabase.auth.signOut();
-    if(error){toast("Logout failed: "+error.message);return}
+
+  const session = data.session;
+  window.vybeSession = session;
+
+  if (!session) {
+    window.vybeUsername = null;
+    authArea.innerHTML =
+      '<a class="btn soft" href="Login.html">Log In</a>' +
+      '<a class="btn primary" href="Register.html">Join</a>';
+    return;
+  }
+
+  let username =
+    session.user.user_metadata?.username ||
+    session.user.email?.split("@")[0] ||
+    "member";
+
+  const { data: profile, error: profileError } = await supabase
+    .from("profiles")
+    .select("username,display_name")
+    .eq("id", session.user.id)
+    .maybeSingle();
+
+  if (profileError) {
+    console.warn("Profile lookup:", profileError.message);
+  }
+
+  if (profile?.username) username = profile.username;
+
+  window.vybeUsername = username;
+
+  const display = profile?.display_name || username;
+
+  document.getElementById("profileName").textContent = display;
+  document.getElementById("profileHandle").textContent = "@" + username;
+  document.getElementById("profileAvatar").textContent =
+    username.charAt(0).toUpperCase();
+  document.getElementById("composeAvatar").textContent =
+    username.charAt(0).toUpperCase();
+
+  authArea.innerHTML =
+    '<span style="font-weight:750;color:var(--purple)">@' +
+    escapeText(username) +
+    '</span><button class="btn soft" id="logoutBtn">Log Out</button>';
+
+  document.getElementById("logoutBtn").addEventListener("click", async () => {
+    const { error } = await supabase.auth.signOut();
+
+    if (error) {
+      toast("Logout failed: " + error.message);
+      return;
+    }
+
     window.location.reload();
   });
+
+  await refreshProfileCounts(session.user.id);
 }
-function escapeText(value){return String(value).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+
+function makeUserCard(profile, isFollowing) {
+  const card = document.createElement("div");
+  card.className = "user-result";
+
+  const avatar = document.createElement("div");
+  avatar.className = "avatar";
+  avatar.textContent = (profile.username || "?").charAt(0).toUpperCase();
+
+  const info = document.createElement("div");
+  info.className = "user-result-info";
+
+  const name = document.createElement("div");
+  name.className = "user-result-name";
+  name.textContent = profile.display_name || profile.username;
+
+  const handle = document.createElement("div");
+  handle.className = "user-result-handle";
+  handle.textContent = "@" + profile.username;
+
+  info.append(name, handle);
+
+  const button = document.createElement("button");
+  button.className =
+    "follow-button" + (isFollowing ? " following" : "");
+  button.textContent = isFollowing ? "Following" : "Follow";
+
+  button.addEventListener("click", () =>
+    toggleFollow(profile.id, button)
+  );
+
+  card.append(avatar, info, button);
+  return card;
+}
+
+async function searchVYBEUsers() {
+  if (!requireLogin()) return;
+
+  const searchTerm = userSearch.value.trim().replace(/^@/, "");
+
+  if (searchTerm.length < 1) {
+    userResults.innerHTML =
+      '<div class="search-status">Type a username to search.</div>';
+    return;
+  }
+
+  userResults.innerHTML =
+    '<div class="search-status">Searching VYBE...</div>';
+
+  const { data: profiles, error } = await supabase
+    .from("profiles")
+    .select("id,username,display_name")
+    .ilike("username", "%" + searchTerm + "%")
+    .limit(30);
+
+  if (error) {
+    console.error("User search:", error);
+    userResults.textContent =
+      "Could not search users: " + error.message;
+    return;
+  }
+
+  const myId = window.vybeSession?.user?.id;
+  const otherProfiles = (profiles || []).filter(p => p.id !== myId);
+
+  if (otherProfiles.length === 0) {
+    userResults.innerHTML =
+      '<div class="empty">No other users found.</div>';
+    return;
+  }
+
+  const ids = otherProfiles.map(p => p.id);
+
+  const { data: followRows, error: followError } = await supabase
+    .from("follows")
+    .select("following_id")
+    .eq("follower_id", myId)
+    .in("following_id", ids);
+
+  if (followError) {
+    console.error("Follow status:", followError);
+    userResults.textContent =
+      "Could not load follow status: " + followError.message;
+    return;
+  }
+
+  const followingSet = new Set(
+    (followRows || []).map(row => row.following_id)
+  );
+
+  userResults.innerHTML = "";
+
+  otherProfiles.forEach(profile => {
+    userResults.appendChild(
+      makeUserCard(profile, followingSet.has(profile.id))
+    );
+  });
+}
+
+async function toggleFollow(targetId, button) {
+  if (!requireLogin()) return;
+
+  const myId = window.vybeSession.user.id;
+
+  if (myId === targetId) {
+    toast("You cannot follow yourself.");
+    return;
+  }
+
+  const wasFollowing = button.classList.contains("following");
+  button.disabled = true;
+
+  if (wasFollowing) {
+    const { error } = await supabase
+      .from("follows")
+      .delete()
+      .eq("follower_id", myId)
+      .eq("following_id", targetId);
+
+    if (error) {
+      console.error("Unfollow error:", error);
+      toast("Unfollow failed: " + error.message);
+      button.disabled = false;
+      return;
+    }
+
+    button.textContent = "Follow";
+    button.classList.remove("following");
+    toast("You unfollowed this user.");
+  } else {
+    const { error } = await supabase
+      .from("follows")
+      .insert({
+        follower_id: myId,
+        following_id: targetId
+      });
+
+    if (error) {
+      console.error("Follow error:", error);
+      toast("Follow failed: " + error.message);
+      button.disabled = false;
+      return;
+    }
+
+    button.textContent = "Following";
+    button.classList.add("following");
+    toast("You are now following this user!");
+  }
+
+  button.disabled = false;
+  await refreshProfileCounts(myId);
+}
+
+window.searchVYBEUsers = searchVYBEUsers;
+
+let searchTimer;
+
+userSearch.addEventListener("input", () => {
+  clearTimeout(searchTimer);
+  searchTimer = setTimeout(searchVYBEUsers, 350);
+});
+
 await refreshAuth();
-supabase.auth.onAuthStateChange((_event,session)=>{window.vybeSession=session;setTimeout(refreshAuth,0)});
+
+supabase.auth.onAuthStateChange((_event, session) => {
+  window.vybeSession = session;
+  setTimeout(refreshAuth, 0);
+});
 </script>
 </body>
 </html>
