@@ -479,8 +479,9 @@ function makeUserCard(profile, isFollowing) {
   });
 
   card.addEventListener("click", () => {
-    openUserProfile(profile.id);
-  });
+  alert("Profile card clicked!");
+  openUserProfile(profile.id);
+});
 
   card.append(avatar, info, button);
   return card;
