@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,102 +7,34 @@
 <title>VYBE — Your Social World</title>
 <style>
 :root{--purple:#7545dc;--purple2:#9b72f2;--ink:#242132;--muted:#817d8e;--line:#eeeaf5;--bg:#f7f5fb;--card:#fff}
-*{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,-apple-system,Segoe UI,Arial,sans-serif}
-button,input,textarea{font:inherit}button{cursor:pointer}
-a{color:inherit;text-decoration:none}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,-apple-system,Segoe UI,Arial,sans-serif}
+button,input,textarea{font:inherit}button{cursor:pointer}a{color:inherit;text-decoration:none}
 .topbar{height:64px;position:sticky;top:0;z-index:20;background:#ffffffed;backdrop-filter:blur(14px);border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 max(16px,calc((100% - 1120px)/2));gap:14px}
-.logo{font-size:27px;font-weight:950;letter-spacing:-1.5px;color:var(--purple)}
-.search{width:min(360px,42vw);background:#f3f0f8;border:1px solid transparent;border-radius:22px;padding:10px 15px;outline:none}
-.search:focus{border-color:#c7b5f2;background:#fff}
-.header-actions{display:flex;align-items:center;gap:10px}
-.auth-area{display:flex;align-items:center;gap:10px}
-.btn{border:0;border-radius:22px;padding:10px 17px;font-weight:750}
-.primary{background:var(--purple);color:white}
-.soft{background:#f0eafb;color:var(--purple)}
-.iconbtn{border:0;background:transparent;font-size:20px;padding:7px;color:#5f596d}
+.logo{font-size:27px;font-weight:950;letter-spacing:-1.5px;color:var(--purple)}.search{width:min(360px,42vw);background:#f3f0f8;border:1px solid transparent;border-radius:22px;padding:10px 15px;outline:none}.search:focus{border-color:#c7b5f2;background:#fff}
+.header-actions,.auth-area{display:flex;align-items:center;gap:10px}.btn{border:0;border-radius:22px;padding:10px 17px;font-weight:750}.primary{background:var(--purple);color:white}.soft{background:#f0eafb;color:var(--purple)}.iconbtn{border:0;background:transparent;font-size:20px;padding:7px;color:#5f596d}
 .avatar{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--purple),#d6bfff);color:white;display:grid;place-items:center;font-weight:800;flex:none}
-.layout{max-width:1120px;margin:22px auto;display:grid;grid-template-columns:220px minmax(0,620px) 240px;gap:20px;padding:0 14px}
-.sidebar,.rightbox{position:sticky;top:84px;align-self:start}
-.side-link{width:100%;display:flex;align-items:center;gap:13px;padding:13px 14px;border:0;background:transparent;border-radius:13px;text-align:left;color:#5e596a;font-weight:650;margin-bottom:5px}
-.side-link.active,.side-link:hover{background:#eee8fb;color:var(--purple)}
-.side-icon{width:24px;text-align:center;font-size:19px}
-.side-create{width:100%;margin:12px 0;padding:13px;border-radius:14px}
-.panel{background:var(--card);border:1px solid var(--line);border-radius:17px;margin-bottom:15px;overflow:hidden}
-.section-title{font-size:19px;margin:0 0 13px;font-weight:850}
-.stories{display:flex;gap:15px;overflow-x:auto;padding:17px}
-.story{min-width:62px;text-align:center;font-size:12px;color:#625d6d}
-.story-ring{width:58px;height:58px;padding:3px;border-radius:50%;background:linear-gradient(135deg,#7545dc,#f08acb);margin:0 auto 6px}
-.story-inner{height:100%;border:3px solid white;border-radius:50%;background:#eee7fa;display:grid;place-items:center;font-size:22px}
-.story-name{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.feed-head{display:flex;justify-content:space-between;align-items:center;padding:17px 18px 0}
-.compose{padding:15px 17px}
-.compose-row{display:flex;gap:11px;align-items:flex-start}
-.compose textarea{width:100%;min-height:64px;resize:vertical;border:0;outline:none;padding:8px 0;color:var(--ink)}
-.compose-bottom{display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--line);padding-top:11px;margin-top:7px}
-.compose-tools{display:flex;gap:15px;color:var(--purple);font-size:14px}
-.post{padding:17px 18px;border-top:1px solid var(--line)}
-.post-head{display:flex;gap:10px;align-items:center}
-.post-name{font-weight:800}
-.handle{font-size:12px;color:var(--muted);margin-top:2px}
-.post-menu{margin-left:auto;border:0;background:transparent;color:var(--muted);font-size:20px}
-.post-text{line-height:1.55;margin:14px 0;white-space:pre-wrap;overflow-wrap:anywhere}
-.post-art{height:260px;border-radius:14px;background:linear-gradient(135deg,#6e40d5,#b48af2 60%,#f0dafa);display:grid;place-items:center;color:white;font-size:35px;font-weight:950;letter-spacing:1px}
-.post-actions{display:flex;justify-content:space-between;max-width:430px;margin-top:14px}
-.post-actions button{border:0;background:transparent;color:#777184;padding:5px 4px;font-size:14px}
-.post-actions button:hover,.post-actions button.liked{color:var(--purple)}
-.rightbox .panel{padding:16px}
-.trend{padding:11px 0;border-bottom:1px solid var(--line)}
-.trend:last-child{border:0}
-.trend small{display:block;color:var(--muted);margin-bottom:4px}
-.trend b{font-size:14px}
-.bottomnav{display:none}
-.view{display:none}
-.view.active{display:block}
-.empty{padding:35px 18px;text-align:center;color:var(--muted)}
-.profile-cover{height:145px;background:linear-gradient(120deg,#7042d2,#bd9af5,#f1dafa)}
-.profile-info{padding:0 18px 18px}
-.profile-info .avatar{width:78px;height:78px;border:4px solid white;margin-top:-38px;font-size:26px}
-.profile-stats{display:flex;gap:22px;margin-top:15px;color:#696475;font-size:14px}
-.toast{position:fixed;bottom:85px;left:50%;transform:translateX(-50%);background:#292334;color:white;padding:11px 17px;border-radius:22px;z-index:50;display:none;max-width:90%;font-size:14px}
-.user-result{display:flex;align-items:center;gap:12px;padding:13px 0;border-bottom:1px solid var(--line)}
-.user-result:last-child{border-bottom:0}
-.user-result-info{min-width:0;flex:1}
-.user-result-name{font-weight:800;overflow-wrap:anywhere}
-.user-result-handle{font-size:12px;color:var(--muted);margin-top:3px}
-.follow-button{border:0;border-radius:20px;padding:9px 15px;font-size:13px;font-weight:750;background:var(--purple);color:white;min-width:90px}
-.follow-button.following{background:#f0eafb;color:var(--purple)}
-.follow-button:disabled{opacity:.6;cursor:wait}
-.search-status{font-size:13px;color:var(--muted);padding:12px 0}
+.layout{max-width:1120px;margin:22px auto;display:grid;grid-template-columns:220px minmax(0,620px) 240px;gap:20px;padding:0 14px}.sidebar,.rightbox{position:sticky;top:84px;align-self:start}
+.side-link{width:100%;display:flex;align-items:center;gap:13px;padding:13px 14px;border:0;background:transparent;border-radius:13px;text-align:left;color:#5e596a;font-weight:650;margin-bottom:5px}.side-link.active,.side-link:hover{background:#eee8fb;color:var(--purple)}.side-icon{width:24px;text-align:center;font-size:19px}.side-create{width:100%;margin:12px 0;padding:13px;border-radius:14px}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:17px;margin-bottom:15px;overflow:hidden}.section-title{font-size:19px;margin:0 0 13px;font-weight:850}
+.stories{display:flex;gap:15px;overflow-x:auto;padding:17px}.story{min-width:62px;text-align:center;font-size:12px;color:#625d6d}.story-ring{width:58px;height:58px;padding:3px;border-radius:50%;background:linear-gradient(135deg,#7545dc,#f08acb);margin:0 auto 6px}.story-inner{height:100%;border:3px solid white;border-radius:50%;background:#eee7fa;display:grid;place-items:center;font-size:22px}.story-name{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.feed-head{display:flex;justify-content:space-between;align-items:center;padding:17px 18px 0}.compose{padding:15px 17px}.compose-row{display:flex;gap:11px;align-items:flex-start}.compose textarea{width:100%;min-height:64px;resize:vertical;border:0;outline:none;padding:8px 0;color:var(--ink)}.compose-bottom{display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--line);padding-top:11px;margin-top:7px}.compose-tools{display:flex;gap:15px;color:var(--purple);font-size:14px}
+.post{padding:17px 18px;border-top:1px solid var(--line)}.post-head{display:flex;gap:10px;align-items:center}.post-name{font-weight:800}.handle{font-size:12px;color:var(--muted);margin-top:2px}.post-menu{margin-left:auto;border:0;background:transparent;color:var(--muted);font-size:20px}.post-text{line-height:1.55;margin:14px 0;white-space:pre-wrap;overflow-wrap:anywhere}.post-art{height:230px;border-radius:14px;background:linear-gradient(135deg,#6e40d5,#b48af2 60%,#f0dafa);display:grid;place-items:center;color:white;font-size:30px;font-weight:950}.post-actions{display:flex;justify-content:space-between;max-width:480px;margin-top:14px}.post-actions button{border:0;background:transparent;color:#777184;padding:5px 4px;font-size:14px}.post-actions button:hover,.post-actions button.liked{color:var(--purple)}
+.rightbox .panel{padding:16px}.trend{padding:11px 0;border-bottom:1px solid var(--line)}.trend:last-child{border:0}.trend small{display:block;color:var(--muted);margin-bottom:4px}.trend b{font-size:14px}
+.bottomnav{display:none}.view{display:none}.view.active{display:block}.empty{padding:35px 18px;text-align:center;color:var(--muted)}.profile-cover{height:145px;background:linear-gradient(120deg,#7042d2,#bd9af5,#f1dafa)}.profile-info{padding:0 18px 18px}.profile-info .avatar{width:78px;height:78px;border:4px solid white;margin-top:-38px;font-size:26px}.profile-stats{display:flex;gap:22px;margin-top:15px;color:#696475;font-size:14px}
+.toast{position:fixed;bottom:85px;left:50%;transform:translateX(-50%);background:#292334;color:white;padding:11px 17px;border-radius:22px;z-index:10000;display:none;max-width:90%;font-size:14px}
+.user-result{display:flex;align-items:center;gap:12px;padding:13px 0;border-bottom:1px solid var(--line)}.user-result:last-child{border-bottom:0}.user-result-info{min-width:0;flex:1}.user-result-name{font-weight:800;overflow-wrap:anywhere}.user-result-handle{font-size:12px;color:var(--muted);margin-top:3px}.follow-button{border:0;border-radius:20px;padding:9px 15px;font-size:13px;font-weight:750;background:var(--purple);color:white;min-width:90px}.follow-button.following{background:#f0eafb;color:var(--purple)}.follow-button:disabled{opacity:.6;cursor:wait}.search-status{font-size:13px;color:var(--muted);padding:12px 0}
+.field{width:100%;padding:12px;border:1px solid var(--line);border-radius:11px;outline-color:var(--purple);margin:5px 0 12px}.muted{color:var(--muted)}.chat-row,.notice-row{display:flex;gap:12px;align-items:center;padding:13px 16px;border-bottom:1px solid var(--line);cursor:pointer}.chat-row:hover,.notice-row:hover{background:#faf8fe}.chat-meta{min-width:0;flex:1}.chat-meta small{display:block;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.chat-window{display:flex;flex-direction:column;min-height:55vh}.chat-top{padding:14px 16px;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:10px}.chat-messages{padding:15px;display:flex;flex-direction:column;gap:9px;flex:1;max-height:55vh;overflow:auto}.bubble{max-width:82%;padding:10px 13px;border-radius:15px;background:#f0eafb;overflow-wrap:anywhere;white-space:pre-wrap;align-self:flex-start}.bubble.mine{background:var(--purple);color:white;align-self:flex-end}.chat-send{display:flex;gap:8px;padding:12px;border-top:1px solid var(--line)}.chat-send input{flex:1;min-width:0;border:1px solid var(--line);border-radius:22px;padding:11px 14px;outline-color:var(--purple)}
+.comment-area{margin-top:10px;border-top:1px solid var(--line);padding-top:10px}.comment-row{font-size:13px;padding:5px 0;overflow-wrap:anywhere}.comment-form{display:flex;gap:7px;margin-top:8px}.comment-form input{min-width:0;flex:1;border:1px solid var(--line);border-radius:18px;padding:9px 12px}.small-btn{border:0;border-radius:18px;background:#f0eafb;color:var(--purple);font-weight:700;padding:8px 12px}
+.modal-backdrop{position:fixed;inset:0;z-index:5000;background:#17132399;display:flex;align-items:center;justify-content:center;padding:16px;overflow:auto}.modal{background:white;color:var(--ink);width:100%;max-width:460px;padding:22px;border-radius:18px;position:relative;max-height:90vh;overflow:auto}.modal-close{position:absolute;right:13px;top:9px;border:0;background:transparent;font-size:25px;color:var(--muted)}
 @media(max-width:900px){.layout{grid-template-columns:190px minmax(0,1fr)}.rightbox{display:none}}
-@media(max-width:650px){
-.topbar{padding:0 13px;height:58px}
-.search{width:36vw}
-.layout{display:block;margin:12px auto;padding:0 9px}
-.sidebar{display:none}
-.bottomnav{position:fixed;bottom:0;left:0;right:0;z-index:30;background:#fff;border-top:1px solid var(--line);display:flex;justify-content:space-around;padding:8px 3px calc(8px + env(safe-area-inset-bottom))}
-.bottomnav button{border:0;background:transparent;color:#6d6878;font-size:11px;display:grid;gap:3px;justify-items:center}
-.bottomnav button span{font-size:20px}
-.bottomnav button.active{color:var(--purple);font-weight:800}
-.panel{border-radius:13px}
-.post-art{height:220px}
-.header-actions .search{display:none}
-.logo{font-size:25px}
-}
+@media(max-width:650px){.topbar{padding:0 13px;height:58px}.search{width:36vw}.layout{display:block;margin:12px auto;padding:0 9px}.sidebar{display:none}.bottomnav{position:fixed;bottom:0;left:0;right:0;z-index:30;background:#fff;border-top:1px solid var(--line);display:flex;justify-content:space-around;padding:8px 3px calc(8px + env(safe-area-inset-bottom))}.bottomnav button{border:0;background:transparent;color:#6d6878;font-size:11px;display:grid;gap:3px;justify-items:center}.bottomnav button span{font-size:20px}.bottomnav button.active{color:var(--purple);font-weight:800}.panel{border-radius:13px}.post-art{height:200px}.header-actions .search{display:none}.logo{font-size:25px}}
 </style>
 </head>
 <body>
-
 <header class="topbar">
 <a class="logo" href="index.html">VYBE.</a>
 <input class="search" id="searchBox" placeholder="Search VYBE..." aria-label="Search VYBE">
-<div class="header-actions">
-<button class="iconbtn" title="Search" onclick="document.getElementById('searchBox').focus()">⌕</button>
-<div class="auth-area" id="authArea">
-<a class="btn soft" href="Login.html">Log In</a>
-<a class="btn primary" href="Register.html">Join</a>
-</div>
-</div>
+<div class="header-actions"><button class="iconbtn" title="Search" onclick="document.getElementById('searchBox').focus()">⌕</button><div class="auth-area" id="authArea"><a class="btn soft" href="Login.html">Log In</a><a class="btn primary" href="Register.html">Join</a></div></div>
 </header>
 
 <div class="layout">
@@ -119,605 +50,282 @@ a{color:inherit;text-decoration:none}
 
 <main>
 <section class="view active" id="view-home">
-<div class="panel">
-<div class="stories">
+<div class="panel"><div class="stories">
 <div class="story"><div class="story-ring"><div class="story-inner">＋</div></div><div class="story-name">Your story</div></div>
-<div class="story"><div class="story-ring"><div class="story-inner">😎</div></div><div class="story-name">Alex</div></div>
-<div class="story"><div class="story-ring"><div class="story-inner">🌸</div></div><div class="story-name">Sara</div></div>
-<div class="story"><div class="story-ring"><div class="story-inner">🔥</div></div><div class="story-name">Ryan</div></div>
+<div class="story"><div class="story-ring"><div class="story-inner">😎</div></div><div class="story-name">Friends</div></div>
+<div class="story"><div class="story-ring"><div class="story-inner">🌸</div></div><div class="story-name">VYBE</div></div>
+<div class="story"><div class="story-ring"><div class="story-inner">🔥</div></div><div class="story-name">Moments</div></div>
 <div class="story"><div class="story-ring"><div class="story-inner">🎧</div></div><div class="story-name">Music</div></div>
-<div class="story"><div class="story-ring"><div class="story-inner">🌊</div></div><div class="story-name">Travel</div></div>
-</div>
-</div>
-
-<div class="panel">
-<div class="compose">
-<div class="compose-row">
-<div class="avatar" id="composeAvatar">V</div>
-<textarea id="postText" placeholder="What's happening in your world?"></textarea>
-</div>
-<div class="compose-bottom">
-<div class="compose-tools"><span>▧ Photo</span><span>☺ Feeling</span><span># Tag</span></div>
-<button class="btn primary" onclick="createPost()">Post</button>
-</div>
-</div>
-</div>
-
-<div class="panel">
-<div class="feed-head">
-<h2 class="section-title">Your VYBE feed ✨</h2>
-<span style="font-size:12px;color:var(--muted)">For you</span>
-</div>
-<div id="feed">
-<article class="post">
-<div class="post-head">
-<div class="avatar">V</div>
-<div><div class="post-name">vybe.community</div><div class="handle">@vybe · Welcome</div></div>
-<button class="post-menu">···</button>
-</div>
-<p class="post-text">Welcome to VYBE! Your thoughts, your pictures, your people. This is where your world comes together. 💜</p>
-<div class="post-art">YOUR WORLD ✨</div>
-<div class="post-actions">
-<button onclick="likePost(this)">♡ <span>Like</span></button>
-<button onclick="featureNotice('Comments')">◯ Comment</button>
-<button onclick="featureNotice('Reposts')">↻ Repost</button>
-<button onclick="featureNotice('Sharing')">↗ Share</button>
-</div>
-</article>
-</div>
-</div>
+</div></div>
+<div class="panel"><div class="compose"><div class="compose-row"><div class="avatar" id="composeAvatar">V</div><textarea id="postText" placeholder="What's happening in your world?"></textarea></div><div class="compose-bottom"><div class="compose-tools"><span>▧ Text post</span><span>☺ Feeling</span></div><button class="btn primary" onclick="createPost('postText')">Post</button></div></div></div>
+<div class="panel"><div class="feed-head"><h2 class="section-title">Your VYBE feed ✨</h2><span class="muted" style="font-size:12px">Latest</span></div><div id="feed"><div class="empty">Loading your feed...</div></div></div>
 </section>
 
-<section class="view" id="view-explore">
-<div class="panel" style="padding:18px">
-<h2 class="section-title">Explore VYBE 🔍</h2>
-<p style="color:var(--muted)">Find people and follow your friends.</p>
-<input id="userSearch" placeholder="Search by username..." style="width:100%;padding:13px;border:1px solid var(--line);border-radius:12px;outline-color:var(--purple)">
-<div id="userResults">
-<div class="empty">Search for a username to find people.</div>
-</div>
-</div>
-</section>
+<section class="view" id="view-explore"><div class="panel" style="padding:18px"><h2 class="section-title">Explore VYBE 🔍</h2><p class="muted">Find people and follow your friends.</p><input id="userSearch" class="field" placeholder="Search by username..." style="margin:0"><div id="userResults"><div class="empty">Search for a username to find people.</div></div></div></section>
 
-<section class="view" id="view-create">
-<div class="panel" style="padding:18px">
-<h2 class="section-title">Create a post</h2>
-<textarea id="createText" placeholder="Share what's on your mind..." style="width:100%;min-height:150px;border:1px solid var(--line);border-radius:12px;padding:13px;outline-color:var(--purple)"></textarea>
-<div style="display:flex;justify-content:flex-end;margin-top:12px">
-<button class="btn primary" onclick="createPost('createText')">Publish</button>
-</div>
-</div>
-</section>
+<section class="view" id="view-create"><div class="panel" style="padding:18px"><h2 class="section-title">Create a post</h2><textarea id="createText" class="field" placeholder="Share what's on your mind..." style="min-height:150px"></textarea><button class="btn primary" onclick="createPost('createText')">Publish</button></div></section>
 
-<section class="view" id="view-notifications">
-<div class="panel">
-<div style="padding:18px">
-<h2 class="section-title">Notifications</h2>
-<div class="empty">Your notifications will appear here when the notification system is connected.</div>
-</div>
-</div>
-</section>
+<section class="view" id="view-notifications"><div class="panel"><div style="padding:18px"><h2 class="section-title">Notifications</h2><div id="notificationsList"><div class="empty">Log in to see your notifications.</div></div></div></div></section>
 
-<section class="view" id="view-messages">
-<div class="panel">
-<div style="padding:18px">
-<h2 class="section-title">Messages</h2>
-<div class="empty">Your private conversations will appear here when messaging is connected.</div>
-</div>
-</div>
-</section>
+<section class="view" id="view-messages"><div class="panel"><div style="padding:18px"><h2 class="section-title">Messages</h2><div id="chatList"><div class="empty">Your private conversations will appear here.</div></div><div id="chatPanel" hidden></div></div></div></section>
 
-<section class="view" id="view-profile">
-<div class="panel">
-<div class="profile-cover"></div>
-<div class="profile-info">
-<div class="avatar" id="profileAvatar">V</div>
-<h2 id="profileName" style="margin:10px 0 2px">Your profile</h2>
-<div id="profileHandle" class="handle">@yourusername</div>
-<p style="color:var(--muted)">Your VYBE profile and posts will appear here.</p>
-<div class="profile-stats">
-<span><b>0</b> Posts</span>
-<span><b id="myFollowers">0</b> Followers</span>
-<span><b id="myFollowing">0</b> Following</span>
-</div>
-<button class="btn soft" style="margin-top:15px" onclick="featureNotice('Profile editing')">Edit profile</button>
-</div>
-</div>
-</section>
+<section class="view" id="view-profile"><div class="panel"><div class="profile-cover"></div><div class="profile-info"><div class="avatar" id="profileAvatar">V</div><h2 id="profileName" style="margin:10px 0 2px">Your profile</h2><div id="profileHandle" class="handle">@yourusername</div><p id="profileBio" class="muted">Your VYBE profile.</p><div class="profile-stats"><span><b id="myPosts">0</b> Posts</span><span><b id="myFollowers">0</b> Followers</span><span><b id="myFollowing">0</b> Following</span></div><button class="btn soft" style="margin-top:15px" onclick="editMyProfile()">Edit profile</button></div><div id="myProfilePosts"></div></div></section>
 </main>
 
-<aside class="rightbox">
-<div class="panel">
-<h3 style="margin:0 0 8px">🔥 Trending on VYBE</h3>
-<div class="trend"><small>Community</small><b>#VYBECommunity</b></div>
-<div class="trend"><small>Photography</small><b>#Photography</b></div>
-<div class="trend"><small>Music</small><b>#Music</b></div>
-<div class="trend"><small>Today</small><b>#DailyThoughts</b></div>
-</div>
-<div class="panel">
-<h3 style="margin:0">Who to follow</h3>
-<p style="font-size:12px;color:var(--muted)">Find people in Explore.</p>
-</div>
-</aside>
+<aside class="rightbox"><div class="panel"><h3 style="margin:0 0 8px">🔥 Trending on VYBE</h3><div class="trend"><small>Community</small><b>#VYBECommunity</b></div><div class="trend"><small>Photography</small><b>#Photography</b></div><div class="trend"><small>Music</small><b>#Music</b></div><div class="trend"><small>Today</small><b>#DailyThoughts</b></div></div><div class="panel"><h3 style="margin:0">Who to follow</h3><p style="font-size:12px;color:var(--muted)">Find people in Explore.</p></div></aside>
 </div>
 
-<nav class="bottomnav">
-<button class="active" data-view="home"><span>⌂</span>Home</button>
-<button data-view="explore"><span>⌕</span>Explore</button>
-<button data-view="create"><span>＋</span>Create</button>
-<button data-view="notifications"><span>♡</span>Alerts</button>
-<button data-view="profile"><span>◉</span>Profile</button>
-</nav>
-
+<nav class="bottomnav"><button class="active" data-view="home"><span>⌂</span>Home</button><button data-view="explore"><span>⌕</span>Explore</button><button data-view="create"><span>＋</span>Create</button><button data-view="notifications"><span>♡</span>Alerts</button><button data-view="messages"><span>✉</span>Chats</button><button data-view="profile"><span>◉</span>Profile</button></nav>
 <div class="toast" id="toast"></div>
 
 <script>
-function toast(message){
-const el=document.getElementById('toast');
-el.textContent=message;
-el.style.display='block';
-clearTimeout(window.toastTimer);
-window.toastTimer=setTimeout(()=>el.style.display='none',2800);
-}
-function featureNotice(name){
-toast(name+' will be enabled when its Supabase feature is connected.');
-}
-function goView(name){
-document.querySelectorAll('.view').forEach(v=>v.classList.toggle('active',v.id==='view-'+name));
-document.querySelectorAll('[data-view]').forEach(b=>b.classList.toggle('active',b.dataset.view===name));
-window.scrollTo({top:0,behavior:'smooth'});
-}
-document.querySelectorAll('[data-view]').forEach(b=>{
-b.addEventListener('click',()=>goView(b.dataset.view));
-});
-function requireLogin(){
-if(!window.vybeSession){
-toast('Please log in to use this feature.');
-return false;
-}
-return true;
-}
-function likePost(button){
-if(!requireLogin())return;
-button.classList.toggle('liked');
-const liked=button.classList.contains('liked');
-button.innerHTML=(liked?'♥ ':'♡ ')+(liked?'<span>Liked</span>':'<span>Like</span>');
-toast('Like interaction is ready for database connection.');
-}
-function createPost(inputId='postText'){
-if(!requireLogin())return;
-const input=document.getElementById(inputId);
-const text=input.value.trim();
-if(!text){toast('Write something before posting.');return;}
-const user=window.vybeUsername||'You';
-const post=document.createElement('article');
-post.className='post';
-const head=document.createElement('div');
-head.className='post-head';
-const avatar=document.createElement('div');
-avatar.className='avatar';
-avatar.textContent=user.charAt(0).toUpperCase();
-const identity=document.createElement('div');
-const name=document.createElement('div');
-name.className='post-name';
-name.textContent=user;
-const handle=document.createElement('div');
-handle.className='handle';
-handle.textContent='@'+user+' · just now';
-identity.append(name,handle);
-head.append(avatar,identity);
-const p=document.createElement('p');
-p.className='post-text';
-p.textContent=text;
-const actions=document.createElement('div');
-actions.className='post-actions';
-[['♡ Like',()=>likePost(actions.children[0])],['◯ Comment',()=>featureNotice('Comments')],['↻ Repost',()=>featureNotice('Reposts')],['↗ Share',()=>featureNotice('Sharing')]].forEach(([label,fn])=>{
-const b=document.createElement('button');
-b.textContent=label;
-b.onclick=fn;
-actions.append(b);
-});
-post.append(head,p,actions);
-document.getElementById('feed').prepend(post);
-input.value='';
-goView('home');
-toast('Post added to this page. Permanent posting needs the posts table.');
-}
-document.getElementById('searchBox').addEventListener('keydown',e=>{
-if(e.key==='Enter'){
-if(!requireLogin())return;
-document.getElementById('userSearch').value=e.target.value.trim();
-goView('explore');
-window.searchVYBEUsers?.();
-}
-});
-  </script>
-  
+function toast(message){const el=document.getElementById('toast');el.textContent=message;el.style.display='block';clearTimeout(window.toastTimer);window.toastTimer=setTimeout(()=>el.style.display='none',3000)}
+function goView(name){document.querySelectorAll('.view').forEach(v=>v.classList.toggle('active',v.id==='view-'+name));document.querySelectorAll('[data-view]').forEach(b=>b.classList.toggle('active',b.dataset.view===name));window.scrollTo({top:0,behavior:'smooth'});if(name==='messages')window.loadConversations?.();if(name==='notifications')window.loadNotifications?.();if(name==='profile')window.loadMyProfile?.()}
+document.querySelectorAll('[data-view]').forEach(b=>b.addEventListener('click',()=>goView(b.dataset.view)));
+function requireLogin(){if(!window.vybeSession){toast('Please log in to use this feature.');return false}return true}
+document.getElementById('searchBox').addEventListener('keydown',e=>{if(e.key==='Enter'){if(!requireLogin())return;document.getElementById('userSearch').value=e.target.value.trim();goView('explore');window.searchVYBEUsers?.()}});
+</script>
+
 <script type="module">
 import { supabase } from "./supabase.js";
 
-window.vybeSession = null;
-window.vybeUsername = null;
+window.vybeSession=null;
+window.vybeUsername=null;
+let activeChatUser=null;
+let messageChannel=null;
+let notificationChannel=null;
+let feedChannel=null;
 
-const authArea = document.getElementById("authArea");
-const userSearch = document.getElementById("userSearch");
-const userResults = document.getElementById("userResults");
+const $=id=>document.getElementById(id);
+const authArea=$('authArea'),userSearch=$('userSearch'),userResults=$('userResults');
 
-function escapeText(value) {
-  return String(value).replace(/[&<>"']/g, c => ({
-    "&": "&amp;",
-    "<": "&lt;",
-    ">": "&gt;",
-    '"': "&quot;",
-    "'": "&#39;"
-  }[c]));
+function safe(value){return String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function timeLabel(value){const d=new Date(value);return isNaN(d)?'':d.toLocaleString()}
+function requireUser(){if(!window.vybeSession){toast('Please log in first.');return false}return true}
+function avatarText(username){return (username||'?').charAt(0).toUpperCase()}
+
+async function refreshProfileCounts(userId){
+ const [f1,f2]=await Promise.all([
+  supabase.from('follows').select('*',{count:'exact',head:true}).eq('following_id',userId),
+  supabase.from('follows').select('*',{count:'exact',head:true}).eq('follower_id',userId)
+ ]);
+ if(!f1.error)$('myFollowers').textContent=f1.count??0;
+ if(!f2.error)$('myFollowing').textContent=f2.count??0;
 }
 
-async function refreshProfileCounts(userId) {
-  const followersResult = await supabase
-    .from("follows")
-    .select("*", { count: "exact", head: true })
-    .eq("following_id", userId);
-
-  const followingResult = await supabase
-    .from("follows")
-    .select("*", { count: "exact", head: true })
-    .eq("follower_id", userId);
-
-  if (followersResult.error) {
-    console.warn("Followers count:", followersResult.error.message);
-  } else {
-    document.getElementById("myFollowers").textContent =
-      followersResult.count ?? 0;
-  }
-
-  if (followingResult.error) {
-    console.warn("Following count:", followingResult.error.message);
-  } else {
-    document.getElementById("myFollowing").textContent =
-      followingResult.count ?? 0;
-  }
+async function refreshAuth(){
+ const {data,error}=await supabase.auth.getSession();
+ if(error){console.error('Session check:',error);toast('Could not check login session.');return}
+ const session=data.session;window.vybeSession=session;
+ if(!session){
+  window.vybeUsername=null;
+  authArea.innerHTML='<a class="btn soft" href="Login.html">Log In</a><a class="btn primary" href="Register.html">Join</a>';
+  $('feed').innerHTML='<div class="empty">Log in to see the VYBE feed.</div>';
+  return;
+ }
+ let username=session.user.user_metadata?.username||session.user.email?.split('@')[0]||'member';
+ const {data:profile,error:profileError}=await supabase.from('profiles').select('username,display_name,bio,avatar_url').eq('id',session.user.id).maybeSingle();
+ if(profileError)console.warn('Profile lookup:',profileError.message);
+ if(profile?.username)username=profile.username;
+ window.vybeUsername=username;
+ const display=profile?.display_name||username;
+ $('profileName').textContent=display;$('profileHandle').textContent='@'+username;$('profileBio').textContent=profile?.bio||'No bio yet.';
+ $('profileAvatar').textContent=avatarText(username);$('composeAvatar').textContent=avatarText(username);
+ authArea.innerHTML='<span style="font-weight:750;color:var(--purple)">@'+safe(username)+'</span><button class="btn soft" id="logoutBtn">Log Out</button>';
+ $('logoutBtn').addEventListener('click',async()=>{const {error}=await supabase.auth.signOut();if(error){toast('Logout failed: '+error.message);return}location.reload()});
+ await refreshProfileCounts(session.user.id);
+ await Promise.all([loadFeed(),loadMyProfile(),loadConversations(),loadNotifications()]);
+ subscribeToUpdates();
 }
 
-async function refreshAuth() {
-  const { data, error } = await supabase.auth.getSession();
+function makeUserCard(profile,isFollowing){
+ const card=document.createElement('div');card.className='user-result';card.style.cursor='pointer';
+ const avatar=document.createElement('div');avatar.className='avatar';avatar.textContent=avatarText(profile.username);
+ const info=document.createElement('div');info.className='user-result-info';
+ const name=document.createElement('div');name.className='user-result-name';name.textContent=profile.display_name||profile.username;
+ const handle=document.createElement('div');handle.className='user-result-handle';handle.textContent='@'+profile.username;info.append(name,handle);
+ const button=document.createElement('button');button.className='follow-button'+(isFollowing?' following':'');button.textContent=isFollowing?'Following':'Follow';
+ button.addEventListener('click',e=>{e.stopPropagation();toggleFollow(profile.id,button)});
+ card.addEventListener('click',()=>openUserProfile(profile.id));card.append(avatar,info,button);return card;
+}
+async function searchVYBEUsers(){
+ if(!requireUser())return;
+ const term=userSearch.value.trim().replace(/^@/,'');
+ if(!term){userResults.innerHTML='<div class="search-status">Type a username to search.</div>';return}
+ userResults.innerHTML='<div class="search-status">Searching VYBE...</div>';
+ const {data:profiles,error}=await supabase.from('profiles').select('id,username,display_name').ilike('username','%'+term+'%').limit(30);
+ if(error){userResults.textContent='Could not search users: '+error.message;return}
+ const myId=window.vybeSession.user.id,others=(profiles||[]).filter(p=>p.id!==myId);
+ if(!others.length){userResults.innerHTML='<div class="empty">No other users found.</div>';return}
+ const ids=others.map(p=>p.id);
+ const {data:follows,error:fe}=await supabase.from('follows').select('following_id').eq('follower_id',myId).in('following_id',ids);
+ if(fe){userResults.textContent='Could not load follow status: '+fe.message;return}
+ const set=new Set((follows||[]).map(x=>x.following_id));userResults.innerHTML='';
+ others.forEach(p=>userResults.appendChild(makeUserCard(p,set.has(p.id))));
+}
+window.searchVYBEUsers=searchVYBEUsers;
+let searchTimer;userSearch.addEventListener('input',()=>{clearTimeout(searchTimer);searchTimer=setTimeout(searchVYBEUsers,350)});
 
-  if (error) {
-    console.error("Session check:", error);
-    return;
-  }
+  async function toggleFollow(targetId,button){
+ if(!requireUser())return;const myId=window.vybeSession.user.id;if(myId===targetId){toast('You cannot follow yourself.');return}
+ const following=button.classList.contains('following');button.disabled=true;
+ const result=following?await supabase.from('follows').delete().eq('follower_id',myId).eq('following_id',targetId):await supabase.from('follows').insert({follower_id:myId,following_id:targetId});
+ if(result.error){toast((following?'Unfollow':'Follow')+' failed: '+result.error.message);button.disabled=false;return}
+ button.textContent=following?'Follow':'Following';button.classList.toggle('following',!following);button.disabled=false;
+ await refreshProfileCounts(myId);toast(following?'You unfollowed this user.':'You are now following this user.');
+}
+window.toggleFollow=toggleFollow;
 
-  const session = data.session;
-  window.vybeSession = session;
-
-  if (!session) {
-    window.vybeUsername = null;
-    authArea.innerHTML =
-      '<a class="btn soft" href="Login.html">Log In</a>' +
-      '<a class="btn primary" href="Register.html">Join</a>';
-    return;
-  }
-
-  let username =
-    session.user.user_metadata?.username ||
-    session.user.email?.split("@")[0] ||
-    "member";
-
-  const { data: profile, error: profileError } = await supabase
-    .from("profiles")
-    .select("username,display_name")
-    .eq("id", session.user.id)
-    .maybeSingle();
-
-  if (profileError) {
-    console.warn("Profile lookup:", profileError.message);
-  }
-
-  if (profile?.username) username = profile.username;
-
-  window.vybeUsername = username;
-
-  const display = profile?.display_name || username;
-
-  document.getElementById("profileName").textContent = display;
-  document.getElementById("profileHandle").textContent = "@" + username;
-  document.getElementById("profileAvatar").textContent =
-    username.charAt(0).toUpperCase();
-  document.getElementById("composeAvatar").textContent =
-    username.charAt(0).toUpperCase();
-
-  authArea.innerHTML =
-    '<span style="font-weight:750;color:var(--purple)">@' +
-    escapeText(username) +
-    '</span><button class="btn soft" id="logoutBtn">Log Out</button>';
-
-  document.getElementById("logoutBtn").addEventListener("click", async () => {
-    const { error } = await supabase.auth.signOut();
-
-    if (error) {
-      toast("Logout failed: " + error.message);
-      return;
-    }
-
-    window.location.reload();
-  });
-
-  await refreshProfileCounts(session.user.id);
+async function openUserProfile(userId){
+ const {data:p,error}=await supabase.from('profiles').select('id,username,display_name,bio,avatar_url,is_private').eq('id',userId).maybeSingle();
+ if(error||!p){toast('Could not open this profile.');return}
+ const [{count:followers},{count:following},{data:followRow}]=await Promise.all([
+  supabase.from('follows').select('*',{count:'exact',head:true}).eq('following_id',userId),
+  supabase.from('follows').select('*',{count:'exact',head:true}).eq('follower_id',userId),
+  supabase.from('follows').select('follower_id').eq('follower_id',window.vybeSession.user.id).eq('following_id',userId).maybeSingle()
+ ]);
+ const modal=document.createElement('div');modal.className='modal-backdrop';
+ const isFollowing=!!followRow;
+ modal.innerHTML=`<div class="modal"><button class="modal-close" aria-label="Close">×</button><div class="avatar" style="width:68px;height:68px;font-size:25px">${safe(avatarText(p.username))}</div><h2>${safe(p.display_name||p.username)}</h2><p class="muted">@${safe(p.username)}</p><p>${safe(p.bio||'No bio yet.')}</p><div class="profile-stats"><span><b>${followers??0}</b> Followers</span><span><b>${following??0}</b> Following</span></div><div style="display:flex;gap:8px;margin:16px 0"><button class="btn ${isFollowing?'soft':'primary'}" id="modalFollow">${isFollowing?'Following':'Follow'}</button><button class="btn primary" id="modalMessage">Message</button></div><h3>Posts</h3><div id="otherUserPosts" class="muted">Loading posts...</div></div>`;
+ document.body.appendChild(modal);modal.querySelector('.modal-close').onclick=()=>modal.remove();modal.addEventListener('click',e=>{if(e.target===modal)modal.remove()});
+ modal.querySelector('#modalFollow').onclick=async()=>{const b=modal.querySelector('#modalFollow');await toggleFollow(userId,b);};
+ modal.querySelector('#modalMessage').onclick=()=>{modal.remove();goView('messages');openChat({id:p.id,username:p.username,display_name:p.display_name})};
+ const postsBox=modal.querySelector('#otherUserPosts');
+ if(p.is_private&&userId!==window.vybeSession.user.id&&!isFollowing){postsBox.textContent='This account is private. Follow this user to see their posts.';return}
+ const {data:posts, error:postError}=await supabase.from('posts').select('id,user_id,content,created_at').eq('user_id',userId).order('created_at',{ascending:false}).limit(20);
+ if(postError){postsBox.textContent='Could not load posts.';return}
+ postsBox.innerHTML='';if(!posts?.length){postsBox.textContent='No posts yet.';return}
+ posts.forEach(post=>postsBox.appendChild(renderPost(post,{username:p.username,display_name:p.display_name})));
 }
 
+async function loadFeed(){
+ if(!requireUser())return;
+ const {data:posts,error}=await supabase.from('posts').select('id,user_id,content,created_at').order('created_at',{ascending:false}).limit(50);
+ if(error){$('feed').textContent='Could not load feed: '+error.message;return}
+ if(!posts?.length){$('feed').innerHTML='<div class="empty">No posts yet. Be the first to share something! 💜</div>';return}
+ const ids=[...new Set(posts.map(p=>p.user_id))];
+ const {data:profiles}=await supabase.from('profiles').select('id,username,display_name').in('id',ids);
+ const map=new Map((profiles||[]).map(p=>[p.id,p]));
+ $('feed').innerHTML='';for(const post of posts)$('feed').appendChild(renderPost(post,map.get(post.user_id)||{username:'member'}));
+  }
+  function renderPost(post,profile){
+ const article=document.createElement('article');article.className='post';article.dataset.postId=post.id;
+ const head=document.createElement('div');head.className='post-head';
+ const av=document.createElement('div');av.className='avatar';av.textContent=avatarText(profile.username);
+ const identity=document.createElement('div');const nm=document.createElement('div');nm.className='post-name';nm.textContent=profile.display_name||profile.username;
+ const handle=document.createElement('div');handle.className='handle';handle.textContent='@'+profile.username+' · '+timeLabel(post.created_at);identity.append(nm,handle);head.append(av,identity);
+ head.style.cursor='pointer';head.onclick=()=>openUserProfile(post.user_id);
+ const content=document.createElement('p');content.className='post-text';content.textContent=post.content;
+ const actions=document.createElement('div');actions.className='post-actions';
+ const like=document.createElement('button');like.textContent='♡ Like';like.onclick=()=>toggleLike(post.id,like);
+ const comment=document.createElement('button');comment.textContent='◯ Comment';comment.onclick=()=>{const area=article.querySelector('.comment-area');if(area)area.hidden=!area.hidden;else loadComments(post.id,article)};
+ const share=document.createElement('button');share.textContent='↗ Share';share.onclick=async()=>{try{await navigator.clipboard.writeText(location.href+'#post-'+post.id);toast('Post link copied.')}catch{toast('Copy is not available in this browser.')}};
+ actions.append(like,comment,share);article.append(head,content,actions);
+ const area=document.createElement('div');area.className='comment-area';area.hidden=true;article.append(area);
+ loadLikeState(post.id,like);return article;
+}
+async function loadLikeState(postId,button){
+ const {count}=await supabase.from('likes').select('*',{count:'exact',head:true}).eq('post_id',postId);
+ const {data}=await supabase.from('likes').select('post_id').eq('post_id',postId).eq('user_id',window.vybeSession.user.id).maybeSingle();
+ button.classList.toggle('liked',!!data);button.textContent=(data?'♥ Liked':'♡ Like')+' · '+(count??0);
+}
+async function toggleLike(postId,button){
+ if(!requireUser())return;const liked=button.classList.contains('liked');
+ const result=liked?await supabase.from('likes').delete().eq('post_id',postId).eq('user_id',window.vybeSession.user.id):await supabase.from('likes').insert({post_id:postId,user_id:window.vybeSession.user.id});
+ if(result.error){toast('Like failed: '+result.error.message);return}
+ await loadLikeState(postId,button);
+}
+  async function loadComments(postId,article){
+ const area=article.querySelector('.comment-area');area.hidden=false;area.innerHTML='<div class="muted">Loading comments...</div>';
+ const {data,error}=await supabase.from('comments').select('id,user_id,content,created_at').eq('post_id',postId).order('created_at',{ascending:true}).limit(100);
+ if(error){area.textContent='Could not load comments: '+error.message;return}
+ const ids=[...new Set((data||[]).map(c=>c.user_id))];let profiles=[];
+ if(ids.length){const r=await supabase.from('profiles').select('id,username,display_name').in('id',ids);profiles=r.data||[]}
+ const map=new Map(profiles.map(p=>[p.id,p]));area.innerHTML='';
+ (data||[]).forEach(c=>{const row=document.createElement('div');row.className='comment-row';const p=map.get(c.user_id)||{username:'member'};const b=document.createElement('b');b.textContent=(p.display_name||p.username)+': ';row.append(b,document.createTextNode(c.content));area.append(row)});
+ if(!data?.length){const empty=document.createElement('div');empty.className='muted';empty.textContent='No comments yet.';area.append(empty)}
+ const form=document.createElement('form');form.className='comment-form';const input=document.createElement('input');input.placeholder='Write a comment...';input.maxLength=1000;const btn=document.createElement('button');btn.className='small-btn';btn.textContent='Send';form.append(input,btn);form.onsubmit=async e=>{e.preventDefault();if(!requireUser())return;const content=input.value.trim();if(!content)return;btn.disabled=true;const r=await supabase.from('comments').insert({post_id:postId,user_id:window.vybeSession.user.id,content});if(r.error)toast('Comment failed: '+r.error.message);else loadComments(postId,article);btn.disabled=false};area.append(form);
+}
+async function createPost(inputId='postText'){
+ if(!requireUser())return;const input=$(inputId),content=input.value.trim();if(!content){toast('Write something before posting.');return}
+ if(content.length>5000){toast('Keep posts under 5,000 characters.');return}
+ const {error}=await supabase.from('posts').insert({user_id:window.vybeSession.user.id,content});
+ if(error){toast('Post failed: '+error.message);console.error(error);return}
+ input.value='';goView('home');await loadFeed();await loadMyProfile();toast('Your post is live on VYBE! 💜');
+}
+window.createPost=createPost;
 
-function makeUserCard(profile, isFollowing) {
-  const card = document.createElement("div");
-  card.className = "user-result";
-  card.style.cursor = "pointer";
+async function loadMyProfile(){
+   if(!requireUser())return;const id=window.vybeSession.user.id;
+ const {data:posts,error}=await supabase.from('posts').select('id,user_id,content,created_at').eq('user_id',id).order('created_at',{ascending:false}).limit(50);
+ if(error){$('myProfilePosts').textContent='Could not load your posts.';return}
+ $('myPosts').textContent=posts?.length??0;$('myProfilePosts').innerHTML='';
+ if(!posts?.length){$('myProfilePosts').innerHTML='<div class="empty">You have not posted yet.</div>';return}
+ const p={username:window.vybeUsername,display_name:$('profileName').textContent};posts.forEach(post=>$('myProfilePosts').appendChild(renderPost(post,p)));
+}
+window.loadMyProfile=loadMyProfile;
 
-  const avatar = document.createElement("div");
-  avatar.className = "avatar";
-  avatar.textContent = (profile.username || "?").charAt(0).toUpperCase();
+async function editMyProfile(){
+ if(!requireUser())return;const {data:p}=await supabase.from('profiles').select('display_name,bio,avatar_url,is_private').eq('id',window.vybeSession.user.id).maybeSingle();
+ const modal=document.createElement('div');modal.className='modal-backdrop';
+ modal.innerHTML=`<form class="modal" id="editProfileForm"><button type="button" class="modal-close">×</button><h2>Edit profile</h2><label>Display name</label><input class="field" name="display_name" maxlength="60" value="${safe(p?.display_name||window.vybeUsername)}"><label>Bio</label><textarea class="field" name="bio" maxlength="250" rows="3">${safe(p?.bio||'')}</textarea><label>Avatar image URL (optional)</label><input class="field" name="avatar_url" type="url" value="${safe(p?.avatar_url||'')}" placeholder="https://..."><label><input type="checkbox" name="is_private" ${p?.is_private?'checked':''}> Private profile</label><p class="muted" style="font-size:12px">This saves an image link, not an image upload.</p><button class="btn primary" type="submit">Save profile</button></form>`;
+ document.body.append(modal);modal.querySelector('.modal-close').onclick=()=>modal.remove();modal.addEventListener('click',e=>{if(e.target===modal)modal.remove()});
+ modal.querySelector('form').onsubmit=async e=>{e.preventDefault();const f=new FormData(e.target);const update={display_name:String(f.get('display_name')||'').trim(),bio:String(f.get('bio')||'').trim(),avatar_url:String(f.get('avatar_url')||'').trim()||null,is_private:f.get('is_private')==='on'};
+ const {error}=await supabase.from('profiles').update(update).eq('id',window.vybeSession.user.id);if(error){toast('Profile update failed: '+error.message);return}
+ $('profileName').textContent=update.display_name||window.vybeUsername;$('profileBio').textContent=update.bio||'No bio yet.';modal.remove();toast('Profile updated!')};
+}
+window.editMyProfile=editMyProfile;
 
-  const info = document.createElement("div");
-  info.className = "user-result-info";
+  async function loadConversations(){
+ if(!requireUser())return;const box=$('chatList');box.innerHTML='<div class="empty">Loading conversations...</div>';
+ const me=window.vybeSession.user.id;
+ const {data:rows,error}=await supabase.from('messages').select('id,sender_id,receiver_id,content,created_at').or(`sender_id.eq.${me},receiver_id.eq.${me}`).order('created_at',{ascending:false}).limit(200);
+ if(error){box.textContent='Could not load messages: '+error.message;return}
+ const latest=new Map();(rows||[]).forEach(m=>{const other=m.sender_id===me?m.receiver_id:m.sender_id;if(!latest.has(other))latest.set(other,m)});
+ if(!latest.size){box.innerHTML='<div class="empty">No conversations yet. Find someone in Explore and tap Message.</div>';return}
+ const ids=[...latest.keys()];const {data:profiles}=await supabase.from('profiles').select('id,username,display_name').in('id',ids);const map=new Map((profiles||[]).map(p=>[p.id,p]));
+ box.innerHTML='';for(const [id,m] of latest){const p=map.get(id)||{username:'member'};const row=document.createElement('div');row.className='chat-row';const av=document.createElement('div');av.className='avatar';av.textContent=avatarText(p.username);const info=document.createElement('div');info.className='chat-meta';const title=document.createElement('b');title.textContent=p.display_name||p.username;const preview=document.createElement('small');preview.textContent=(m.sender_id===me?'You: ':'')+m.content;info.append(title,preview);row.append(av,info);row.onclick=()=>openChat({id,username:p.username,display_name:p.display_name});box.append(row)}
+}
+window.loadConversations=loadConversations;
 
-  const name = document.createElement("div");
-  name.className = "user-result-name";
-  name.textContent = profile.display_name || profile.username;
-
-  const handle = document.createElement("div");
-  handle.className = "user-result-handle";
-  handle.textContent = "@" + profile.username;
-
-  info.append(name, handle);
-
-  const button = document.createElement("button");
-  button.className =
-    "follow-button" + (isFollowing ? " following" : "");
-  button.textContent = isFollowing ? "Following" : "Follow";
-
-  button.addEventListener("click", (event) => {
-    event.stopPropagation();
-    toggleFollow(profile.id, button);
-  });
-
-  card.addEventListener("click", () => {
-  openUserProfile(profile.id);
-});
-
-  card.append(avatar, info, button);
-  return card;
+  async function openChat(person){
+ if(!requireUser())return;activeChatUser=person;const panel=$('chatPanel');panel.hidden=false;
+ panel.innerHTML=`<div class="chat-window"><div class="chat-top"><button class="small-btn" id="backChats">←</button><div class="avatar">${safe(avatarText(person.username))}</div><b>${safe(person.display_name||person.username)}</b></div><div class="chat-messages" id="chatMessages">Loading messages...</div><form class="chat-send" id="chatSend"><input id="messageInput" maxlength="4000" placeholder="Write a message..." autocomplete="off"><button class="btn primary">Send</button></form></div>`;
+ $('backChats').onclick=()=>{panel.hidden=true;activeChatUser=null;loadConversations()};
+ $('chatSend').onsubmit=async e=>{e.preventDefault();const input=$('messageInput'),content=input.value.trim();if(!content)return;const btn=e.submitter;btn.disabled=true;const {error}=await supabase.from('messages').insert({sender_id:window.vybeSession.user.id,receiver_id:person.id,content});btn.disabled=false;if(error){toast('Message failed: '+error.message);return}input.value='';await loadChatMessages();await loadConversations()};
+ await loadChatMessages();
+ if(messageChannel){supabase.removeChannel(messageChannel);messageChannel=null}
+ messageChannel=supabase.channel('vybe-chat-'+window.vybeSession.user.id+'-'+person.id).on('postgres_changes',{event:'INSERT',schema:'public',table:'messages'},payload=>{const m=payload.new;if((m.sender_id===person.id&&m.receiver_id===window.vybeSession.user.id)||(m.sender_id===window.vybeSession.user.id&&m.receiver_id===person.id)){loadChatMessages();loadConversations()}}).subscribe();
+}
+async function loadChatMessages(){
+ if(!activeChatUser)return;const me=window.vybeSession.user.id,other=activeChatUser.id;
+ const {data,error}=await supabase.from('messages').select('id,sender_id,receiver_id,content,created_at').or(`and(sender_id.eq.${me},receiver_id.eq.${other}),and(sender_id.eq.${other},receiver_id.eq.${me})`).order('created_at',{ascending:true}).limit(300);
+ const box=$('chatMessages');if(!box)return;if(error){box.textContent='Could not load messages: '+error.message;return}
+ box.innerHTML='';(data||[]).forEach(m=>{const bubble=document.createElement('div');bubble.className='bubble'+(m.sender_id===me?' mine':'');bubble.textContent=m.content;box.append(bubble)});if(!data?.length)box.innerHTML='<div class="empty">Say hello 👋</div>';box.scrollTop=box.scrollHeight;
 }
 
-async function openUserProfile(userId) {
-  const { data: profile, error } = await supabase
-    .from("profiles")
-    .select("id,username,display_name,bio,avatar_url,is_private")
-    .eq("id", userId)
-    .maybeSingle();
-
-  if (error || !profile) {
-    toast("Could not open this profile.");
-    return;
-  }
-
-  const { count: followers } = await supabase
-    .from("follows")
-    .select("*", { count: "exact", head: true })
-    .eq("following_id", userId);
-
-  const { count: following } = await supabase
-    .from("follows")
-    .select("*", { count: "exact", head: true })
-    .eq("follower_id", userId);
-
-  const oldModal = document.getElementById("userProfileModal");
-  if (oldModal) oldModal.remove();
-
-  const modal = document.createElement("div");
-  modal.id = "userProfileModal";
-
-  modal.style.cssText = `
-    position:fixed;
-    inset:0;
-    z-index:9999;
-    background:rgba(0,0,0,.65);
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    padding:20px;
-  `;
-
-  modal.innerHTML = `
-    <div style="
-      background:var(--card,#fff);
-      color:var(--text,#222);
-      width:100%;
-      max-width:420px;
-      padding:24px;
-      border-radius:18px;
-      position:relative;
-    ">
-      <button id="closeUserProfile" style="
-        position:absolute;
-        right:15px;
-        top:12px;
-        border:0;
-        background:transparent;
-        font-size:25px;
-        cursor:pointer;
-        color:inherit;
-      ">×</button>
-
-      <div style="
-        width:65px;
-        height:65px;
-        border-radius:50%;
-        background:var(--purple,#7545dc);
-        color:white;
-        display:flex;
-        align-items:center;
-        justify-content:center;
-        font-size:25px;
-        font-weight:bold;
-        margin-bottom:12px;
-      ">
-        ${escapeText((profile.username || "?").charAt(0).toUpperCase())}
-      </div>
-
-      <h2>${escapeText(profile.display_name || profile.username)}</h2>
-      <p style="color:var(--muted)">@${escapeText(profile.username)}</p>
-
-      <p>${escapeText(profile.bio || "No bio yet.")}</p>
-
-      <div style="display:flex;gap:20px;margin-top:18px">
-        <span><b>${followers ?? 0}</b> Followers</span>
-        <span><b>${following ?? 0}</b> Following</span>
-      </div>
-    </div>
-  `;
-
-  document.body.appendChild(modal);
-
-  document.getElementById("closeUserProfile")
-    .addEventListener("click", () => modal.remove());
-
-  modal.addEventListener("click", event => {
-    if (event.target === modal) modal.remove();
-  });
+async function loadNotifications(){
+ if(!requireUser())return;const box=$('notificationsList');box.innerHTML='<div class="empty">Loading notifications...</div>';
+ const {data:rows,error}=await supabase.from('notifications').select('id,actor_id,type,entity_id,message,is_read,created_at').eq('recipient_id',window.vybeSession.user.id).order('created_at',{ascending:false}).limit(80);
+ if(error){box.textContent='Could not load notifications: '+error.message;return}
+ if(!rows?.length){box.innerHTML='<div class="empty">You are all caught up. 💜</div>';return}
+ const ids=[...new Set(rows.map(n=>n.actor_id).filter(Boolean))];let profiles=[];if(ids.length){const r=await supabase.from('profiles').select('id,username,display_name').in('id',ids);profiles=r.data||[]}
+ const map=new Map(profiles.map(p=>[p.id,p]));box.innerHTML='';
+ rows.forEach(n=>{const row=document.createElement('div');row.className='notice-row';const p=map.get(n.actor_id)||{username:'VYBE'};const av=document.createElement('div');av.className='avatar';av.textContent=avatarText(p.username);const info=document.createElement('div');info.className='chat-meta';const msg=document.createElement('b');msg.textContent=n.message||((p.display_name||p.username)+' '+n.type);const date=document.createElement('small');date.textContent=timeLabel(n.created_at);info.append(msg,date);row.append(av,info);if(!n.is_read)row.style.background='#f7f2ff';row.onclick=async()=>{await supabase.from('notifications').update({is_read:true}).eq('id',n.id);row.style.background='';if(n.type==='message')goView('messages');else if(n.type==='follow')openUserProfile(n.actor_id);else if(n.entity_id){const {data:post}=await supabase.from('posts').select('id,user_id,content,created_at').eq('id',n.entity_id).maybeSingle();if(post){goView('home');await loadFeed()}}};box.append(row)});
 }
-  
+window.loadNotifications=loadNotifications;
 
-async function searchVYBEUsers() {
-  if (!requireLogin()) return;
-
-  const searchTerm = userSearch.value.trim().replace(/^@/, "");
-
-  if (searchTerm.length < 1) {
-    userResults.innerHTML =
-      '<div class="search-status">Type a username to search.</div>';
-    return;
-  }
-
-  userResults.innerHTML =
-    '<div class="search-status">Searching VYBE...</div>';
-
-  const { data: profiles, error } = await supabase
-    .from("profiles")
-    .select("id,username,display_name")
-    .ilike("username", "%" + searchTerm + "%")
-    .limit(30);
-
-  if (error) {
-    console.error("User search:", error);
-    userResults.textContent =
-      "Could not search users: " + error.message;
-    return;
-  }
-
-  const myId = window.vybeSession?.user?.id;
-  const otherProfiles = (profiles || []).filter(p => p.id !== myId);
-
-  if (otherProfiles.length === 0) {
-    userResults.innerHTML =
-      '<div class="empty">No other users found.</div>';
-    return;
-  }
-
-  const ids = otherProfiles.map(p => p.id);
-
-  const { data: followRows, error: followError } = await supabase
-    .from("follows")
-    .select("following_id")
-    .eq("follower_id", myId)
-    .in("following_id", ids);
-
-  if (followError) {
-    console.error("Follow status:", followError);
-    userResults.textContent =
-      "Could not load follow status: " + followError.message;
-    return;
-  }
-
-  const followingSet = new Set(
-    (followRows || []).map(row => row.following_id)
-  );
-
-  userResults.innerHTML = "";
-
-  otherProfiles.forEach(profile => {
-    userResults.appendChild(
-      makeUserCard(profile, followingSet.has(profile.id))
-    );
-  });
+  function subscribeToUpdates(){
+ if(feedChannel)supabase.removeChannel(feedChannel);
+ feedChannel=supabase.channel('vybe-feed-'+window.vybeSession.user.id).on('postgres_changes',{event:'*',schema:'public',table:'posts'},()=>loadFeed()).subscribe();
+ if(notificationChannel)supabase.removeChannel(notificationChannel);
+ notificationChannel=supabase.channel('vybe-notifications-'+window.vybeSession.user.id).on('postgres_changes',{event:'INSERT',schema:'public',table:'notifications',filter:'recipient_id=eq.'+window.vybeSession.user.id},()=>loadNotifications()).subscribe();
 }
 
-async function toggleFollow(targetId, button) {
-  if (!requireLogin()) return;
-
-  const myId = window.vybeSession.user.id;
-
-  if (myId === targetId) {
-    toast("You cannot follow yourself.");
-    return;
-  }
-
-  const wasFollowing = button.classList.contains("following");
-  button.disabled = true;
-
-  if (wasFollowing) {
-    const { error } = await supabase
-      .from("follows")
-      .delete()
-      .eq("follower_id", myId)
-      .eq("following_id", targetId);
-
-    if (error) {
-      console.error("Unfollow error:", error);
-      toast("Unfollow failed: " + error.message);
-      button.disabled = false;
-      return;
-    }
-
-    button.textContent = "Follow";
-    button.classList.remove("following");
-    toast("You unfollowed this user.");
-  } else {
-    const { error } = await supabase
-      .from("follows")
-      .insert({
-        follower_id: myId,
-        following_id: targetId
-      });
-
-    if (error) {
-      console.error("Follow error:", error);
-      toast("Follow failed: " + error.message);
-      button.disabled = false;
-      return;
-    }
-
-    button.textContent = "Following";
-    button.classList.add("following");
-    toast("You are now following this user!");
-  }
-
-  button.disabled = false;
-  await refreshProfileCounts(myId);
-}
-
-window.searchVYBEUsers = searchVYBEUsers;
-
-let searchTimer;
-
-userSearch.addEventListener("input", () => {
-  clearTimeout(searchTimer);
-  searchTimer = setTimeout(searchVYBEUsers, 350);
-});
-
+userSearch.addEventListener('keydown',e=>{if(e.key==='Enter')searchVYBEUsers()});
 await refreshAuth();
-
-supabase.auth.onAuthStateChange((_event, session) => {
-  window.vybeSession = session;
-  setTimeout(refreshAuth, 0);
-});
+supabase.auth.onAuthStateChange((_event,session)=>{window.vybeSession=session;setTimeout(refreshAuth,0)});
 </script>
 </body>
 </html>
+
