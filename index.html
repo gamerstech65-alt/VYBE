@@ -445,9 +445,11 @@ async function refreshAuth() {
   await refreshProfileCounts(session.user.id);
 }
 
+
 function makeUserCard(profile, isFollowing) {
   const card = document.createElement("div");
   card.className = "user-result";
+  card.style.cursor = "pointer";
 
   const avatar = document.createElement("div");
   avatar.className = "avatar";
@@ -471,13 +473,117 @@ function makeUserCard(profile, isFollowing) {
     "follow-button" + (isFollowing ? " following" : "");
   button.textContent = isFollowing ? "Following" : "Follow";
 
-  button.addEventListener("click", () =>
-    toggleFollow(profile.id, button)
-  );
+  button.addEventListener("click", (event) => {
+    event.stopPropagation();
+    toggleFollow(profile.id, button);
+  });
+
+  card.addEventListener("click", () => {
+    openUserProfile(profile.id);
+  });
 
   card.append(avatar, info, button);
   return card;
 }
+
+async function openUserProfile(userId) {
+  const { data: profile, error } = await supabase
+    .from("profiles")
+    .select("id,username,display_name,bio,avatar_url,is_private")
+    .eq("id", userId)
+    .maybeSingle();
+
+  if (error || !profile) {
+    toast("Could not open this profile.");
+    return;
+  }
+
+  const { count: followers } = await supabase
+    .from("follows")
+    .select("*", { count: "exact", head: true })
+    .eq("following_id", userId);
+
+  const { count: following } = await supabase
+    .from("follows")
+    .select("*", { count: "exact", head: true })
+    .eq("follower_id", userId);
+
+  const oldModal = document.getElementById("userProfileModal");
+  if (oldModal) oldModal.remove();
+
+  const modal = document.createElement("div");
+  modal.id = "userProfileModal";
+
+  modal.style.cssText = `
+    position:fixed;
+    inset:0;
+    z-index:9999;
+    background:rgba(0,0,0,.65);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+  `;
+
+  modal.innerHTML = `
+    <div style="
+      background:var(--card,#fff);
+      color:var(--text,#222);
+      width:100%;
+      max-width:420px;
+      padding:24px;
+      border-radius:18px;
+      position:relative;
+    ">
+      <button id="closeUserProfile" style="
+        position:absolute;
+        right:15px;
+        top:12px;
+        border:0;
+        background:transparent;
+        font-size:25px;
+        cursor:pointer;
+        color:inherit;
+      ">×</button>
+
+      <div style="
+        width:65px;
+        height:65px;
+        border-radius:50%;
+        background:var(--purple,#7545dc);
+        color:white;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        font-size:25px;
+        font-weight:bold;
+        margin-bottom:12px;
+      ">
+        ${escapeText((profile.username || "?").charAt(0).toUpperCase())}
+      </div>
+
+      <h2>${escapeText(profile.display_name || profile.username)}</h2>
+      <p style="color:var(--muted)">@${escapeText(profile.username)}</p>
+
+      <p>${escapeText(profile.bio || "No bio yet.")}</p>
+
+      <div style="display:flex;gap:20px;margin-top:18px">
+        <span><b>${followers ?? 0}</b> Followers</span>
+        <span><b>${following ?? 0}</b> Following</span>
+      </div>
+    </div>
+  `;
+
+  document.body.appendChild(modal);
+
+  document.getElementById("closeUserProfile")
+    .addEventListener("click", () => modal.remove());
+
+  modal.addEventListener("click", event => {
+    if (event.target === modal) modal.remove();
+  });
+}
+  
 
 async function searchVYBEUsers() {
   if (!requireLogin()) return;
